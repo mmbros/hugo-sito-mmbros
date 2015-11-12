@@ -1,0 +1,36 @@
+html {
+  font-family: sans-serif;
+  color: #cccccc;
+  background-color: #3333ff;
+}
+
+a {
+  color: #33ee33;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ee3333;
+  text-decoration: underline;
+}
+
+h1, h2, h3 {
+  color: #eee;
+}
+
+
+.tags {
+  padding: 0;
+}
+.tags li {
+  display: inline;
+  list-style-type: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.tags li a:hover {
+  color: black;
+  background-color: #ee3333;
+  text-decoration: none;
+}

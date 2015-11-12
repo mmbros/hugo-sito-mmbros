@@ -1,0 +1,13 @@
+{{ partial "head.html" . }}
+<section class="note">
+  <h1 class="page-title">{{.Title}}</h1>
+  <ul class="tags">
+    {{ range .Params.tags }}
+      <li><a href="/tags/{{ . | urlize }}">{{ . }}</a></li>
+    {{ end }}
+  </ul>
+  <article>
+     {{ .Content }}
+  </article>
+</section>
+{{ partial "footer.html" . }}
