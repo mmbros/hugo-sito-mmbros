@@ -1,11 +1,19 @@
 html {
   font-family: sans-serif;
-  color: #cccccc;
-  background-color: #3333ff;
+  color: #444;
+  background-color: #ffffff;
+}
+
+.home {
+  background-color: #43e061;
+}
+
+.home a {
+  color: #ffffff;
 }
 
 a {
-  color: #33ee33;
+  color: #43e061;
   text-decoration: none;
 }
 
@@ -15,7 +23,7 @@ a:hover {
 }
 
 h1, h2, h3 {
-  color: #eee;
+  color: #438061;
 }
 
 
