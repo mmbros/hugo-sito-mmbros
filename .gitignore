@@ -4,3 +4,7 @@
 /themes/*
 # not ignore 'themes/mmbase' subfolder
 !/themes/mmbase
+/themes/mmbase/**/*.map
+
+/node_modules
+/bower_components

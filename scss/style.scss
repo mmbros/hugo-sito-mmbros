@@ -1,0 +1,17 @@
+// style.scss
+@import 'base';
+@import 'layout';
+@import 'theme';
+
+@import 'mixins/reset';
+
+.tags {
+  @include reset-box-model();
+  background-color: yellow;
+  border: 1px solid red;
+  li {
+    //@include horizontal-list()
+    display: inline;
+    list-style-type: none;
+  }
+}

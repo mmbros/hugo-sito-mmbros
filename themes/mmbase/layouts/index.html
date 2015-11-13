@@ -1,10 +1,13 @@
 {{ partial "head.html" . }}
+<section class="mainbar">
+  <h1><b>MM</b>bros</h1>
+</section><!-- mainbar -->
+
 <section class="summary">
-  <h1 class="page-title">{{.Title}}</h1>
-  <div>
+  <div class="summary-list">
     {{ range first 10 .Data.Pages }}
         {{ .Render "summary"}}
     {{ end }}
-  </div>
-</section><!-- section.summary -->
+  </div><!-- summary-list -->
+</section><!-- summary -->
 {{ partial "footer.html" . }}

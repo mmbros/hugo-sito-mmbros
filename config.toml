@@ -1,6 +1,6 @@
 baseurl = "http://mmbros.github.io"
 languageCode = "it-IT"
-title = "mmbros homepage"
+title = "MMbros homepage"
 pluralizeListTitles = false
 builddrafts = true
 theme = "mmbase"

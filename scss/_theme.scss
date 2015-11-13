@@ -1,0 +1,15 @@
+.mainbar {
+  background-color: #7fc;
+}
+
+body {
+  color: #777;
+}
+
+a {
+  text-decoration: none;
+  color: #4362df;
+  &:hover {
+    text-decoration: underline;
+  }
+}
