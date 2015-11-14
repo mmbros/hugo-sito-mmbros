@@ -5,25 +5,13 @@
 
 @import 'mixins/reset';
 
-@import 'fonts/icomoon';
-
-
-
-
 .tags {
-  display: inline;
-  @include reset-box-model;
-
+  @include reset-box-model();
+  background-color: yellow;
+  border: 1px solid red;
   li {
+    //@include horizontal-list()
     display: inline;
     list-style-type: none;
-
-    a {
-      color: inherit;
-    }
   }
-}
-
-.summary-item > .content {
-  margin: 1rem 0 0.25rem 0;
 }
