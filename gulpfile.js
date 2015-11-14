@@ -10,7 +10,7 @@ var del = require('del');
 var sass = require('gulp-sass')
 var autoprefixer = require('gulp-autoprefixer')
 var sourcemaps = require('gulp-sourcemaps')
-//var rename = require('gulp-rename');
+var rename = require('gulp-rename');
 //var minifycss = require('gulp-minify-css')
 var browserSync = require("browser-sync").create();
 
@@ -28,12 +28,6 @@ var paths = {
     dest: './public/**/*.html'
   },
 
-  fonts: {
-    icomoon: {
-      src: './bower_components/icomoon-bower/fonts/*',
-      dest: './themes/mmbase/static/fonts'
-    }
-  }
 };
 
 
@@ -42,8 +36,13 @@ var paths = {
  */
 
 gulp.task('fonts-icomoon', function() {
-  gulp.src(paths.fonts.icomoon.src)
-    .pipe(gulp.dest(paths.fonts.icomoon.dest));
+  // copy icomoon fonts to static/fonts folder
+  gulp.src('./bower_components/icomoon-bower/fonts/icomoon.*')
+    .pipe(gulp.dest('./themes/mmbase/static/fonts'));
+  // copy & rename style.css to ./scss/fonts folder
+  gulp.src('./bower_components/icomoon-bower/style.css')
+    .pipe(rename('_icomoon.scss'))
+    .pipe(gulp.dest('./scss/fonts/'));
 });
 
 

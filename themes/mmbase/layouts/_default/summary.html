@@ -1,15 +1,39 @@
+<!--
+.summary-item
+  header
+    .title
+    .date
+    .reading-time
+    .tags
+  .content
+  footer
+-->
 <article class="summary-item">
+
     <header>
-      <h2><a href="{{ .RelPermalink }}">{{ .Title }}{{ if .Draft }}<span class="draft"> :: DRAFT</span>{{end}}</a></h2>
-      <div class="post-meta">{{ .Date.Format "Mon 2 Jan 2006" }} -  Read in {{ .ReadingTime }} min </div>
+      <!-- summary-item TITLE -->
+      <h2 class="title"><a href="{{ .RelPermalink }}">{{ .Title }}{{ if .Draft }}<span class="draft"> :: DRAFT</span>{{end}}</a></h2>
+
+      <!-- summary-item DATE -->
+      <div class="date">{{ .Date.Format "Mon 2 Jan 2006" }}</date>
+
+      <!-- summary-item READING TIME -->
+      <div class="reading-time">Read in {{ .ReadingTime }} min</div>
+
+      <!-- summary-item TAGS -->
       <ul class="tags">
         {{ range .Params.tags }}
-          <li><a href="/tags/{{ . | urlize }}">[{{ . }}]</a></li>
+          <li><a href="/tags/{{ . | urlize }}">{{ . }}</a></li>
         {{ end }}
       </ul>
     </header>
-    {{ .Summary }}
+
+    <div class="content">
+      {{ .Summary }}
+    </div>
+
     <footer>
-        <a href='{{ .RelPermalink }}'><nobr>Read more →</nobr></a>
+        <a href='{{ .RelPermalink }}'><nobr>Read more</nobr></a>
     </footer>
-</article><!-- summary-item -->
+
+</article>
