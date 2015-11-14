@@ -38,7 +38,12 @@ Add the following commands to $HOME/.profile:
 Note: `GOROOT` must be set only when installing to a custom location.
 
 
-# wellington
+# NOTES
+
+## train
+[train](https://github.com/shaoshing/train) Asset Management for web app using Golang
+
+## wellington
 
 [Building from Source (any OS)](http://getwt.io/docs/install/)
 

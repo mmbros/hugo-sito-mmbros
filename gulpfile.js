@@ -14,6 +14,7 @@ var sourcemaps = require('gulp-sourcemaps')
 //var minifycss = require('gulp-minify-css')
 var browserSync = require("browser-sync").create();
 
+
 var paths = {
   sass: {
     watch: ['./scss/**/*.{scss,sass}'],
@@ -25,14 +26,32 @@ var paths = {
     watch: ['./public/**/*.html'],
     src: './public/**/*.html',
     dest: './public/**/*.html'
-  }
+  },
 
+  fonts: {
+    icomoon: {
+      src: './bower_components/icomoon-bower/fonts/*',
+      dest: './themes/mmbase/static/fonts'
+    }
+  }
 };
 
 
+/**
+ * FONTS
+ */
+
+gulp.task('fonts-icomoon', function() {
+  gulp.src(paths.fonts.icomoon.src)
+    .pipe(gulp.dest(paths.fonts.icomoon.dest));
+});
+
+
+gulp.task('fonts', ['fonts-icomoon']);
+
 
 /**
- * Compile SASS into CSS with gulp-sass + autoprefixer + sourcemaps
+ * SASS
  */
 
 gulp.task('sass', function() {
@@ -51,10 +70,20 @@ gulp.task('sass', function() {
 });
 
 
+/**
+ * CLEAN
+ */
+
+
 gulp.task('clean', function() {
   del("./public");
+  del("./themes/mmbase/static/*");
 });
 
+
+/**
+ * HTML
+ */
 
 gulp.task('html', function() {
   return gulp.src(paths.html.src)
@@ -64,8 +93,13 @@ gulp.task('html', function() {
 });
 
 
+/**
+ * SERVE
+ */
+
+
 // Static Server + watching scss/html files
-gulp.task('serve', ['sass', 'html'], function() {
+gulp.task('serve', ['fonts', 'sass', 'html'], function() {
 
     browserSync.init({
       // Serve files from the app directory, with a specific index filename
