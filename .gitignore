@@ -1,10 +1,5 @@
-# ignore hugo 'public' folder
 /public
-# ignore 'themes' folder (and subfolders)
-/themes/*
-# not ignore 'themes/mmbase' subfolder
-!/themes/mmbase
-/themes/mmbase/**/*.map
-
+/themes
+/static
 /node_modules
 /bower_components

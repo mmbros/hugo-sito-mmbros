@@ -3,7 +3,7 @@ languageCode = "it-IT"
 title = "MMbros homepage"
 pluralizeListTitles = false
 builddrafts = true
-theme = "mmbase"
+# theme = "mmbase"
 # [permalinks]
 # eventi = /:year/:month/:day/:slug/
 

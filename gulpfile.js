@@ -19,7 +19,7 @@ var paths = {
   sass: {
     watch: ['./scss/**/*.{scss,sass}'],
     src: './scss/**/*.{scss,sass}',
-    dest: './themes/mmbase/static'
+    dest: './static/css'
   },
 
   html: {
@@ -31,7 +31,7 @@ var paths = {
   fonts: {
     icomoon: {
       src: './bower_components/icomoon-bower/fonts/*',
-      dest: './themes/mmbase/static/fonts'
+      dest: './static/fonts'
     }
   }
 };
@@ -61,7 +61,8 @@ gulp.task('sass', function() {
     .pipe(autoprefixer())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(paths.sass.dest))
-    .pipe(gulp.dest('./public'))
+
+    .pipe(gulp.dest('./public/css'))
 
 //    .pipe(rename({suffix: '.min'}))
 //    .pipe(minifycss())
@@ -76,8 +77,8 @@ gulp.task('sass', function() {
 
 
 gulp.task('clean', function() {
-  del("./public");
-  del("./themes/mmbase/static/*");
+  del("./public/*");
+  del("./themes/*");
 });
 
 

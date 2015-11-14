@@ -1,0 +1,49 @@
+<!--
+
+  .summary-item
+    header
+      .summary-item-title
+      .summary-item-info
+        .date
+        .reading-time
+        .tags
+    .summary-item-content
+    .summary-item-footer
+
+-->
+
+<!-- SUMMARY-ITEM -->
+<article class="summary-item">
+
+  <!-- HEADER -->
+  <header>
+    <!-- TITLE -->
+    <h3 class="summary-item-title"><a href="{{ .RelPermalink }}">{{ .Title }}{{ if .Draft }}<span class="draft"> :: DRAFT</span>{{end}}</a></h3>
+    <!-- INFO -->
+    <div class="summary-item-info">
+      <!-- DATE -->
+      <div class="date">{{ .Date.Format "Mon January 2, 2006" }}</div>
+      <!-- READING-TIME -->
+      <div class="reading-time">Read in {{ .ReadingTime }} min</div>
+      <!-- TAGS -->
+{{ if .Params.tags }}
+      <ul class="tags">
+        {{ range .Params.tags }}
+          <li><a href="/tags/{{ . | urlize }}">[{{ . }}]</a></li>
+        {{ end }}
+      </ul>
+{{ end }}
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <div class="summary-item-content">
+    {{ .Summary }}
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="summary-item-footer">
+      <a href='{{ .RelPermalink }}'><nobr>Read more →</nobr></a>
+  </footer>
+
+</article>

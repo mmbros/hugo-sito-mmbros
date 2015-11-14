@@ -7,11 +7,14 @@
 
 .tags {
   @include reset-box-model();
-  background-color: yellow;
-  border: 1px solid red;
   li {
     //@include horizontal-list()
     display: inline;
     list-style-type: none;
   }
+}
+
+.summary-item-content {
+  margin: 0.5rem 0;
+  color: red;
 }
