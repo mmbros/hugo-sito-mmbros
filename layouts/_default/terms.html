@@ -1,6 +1,6 @@
-{{ partial "head.html" . }}
+{{ partial "common_page_start.html" . }}
 
-<section id="main">
+<section class="l-content">
   <div>
    <h1 id="title">{{ .Title }}</h1>
    {{ $data := .Data }}
@@ -10,4 +10,4 @@
   </div>
 </section>
 
-{{ partial "footer.html" . }}
+{{ partial "common_page_end.html" . }}

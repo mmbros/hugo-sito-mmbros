@@ -29,13 +29,7 @@
       <!-- READING-TIME -->
       <div class="reading-time">Read in {{ .ReadingTime }} min</div>
       <!-- TAGS -->
-{{ if .Params.tags }}
-      <ul class="tags">
-        {{ range .Params.tags }}
-          <li><a href="/tags/{{ . | urlize }}">[{{ . }}]</a></li>
-        {{ end }}
-      </ul>
-{{ end }}
+      {{ partial "tags.html" .Params }}
     </div>
   </header>
 
@@ -44,9 +38,11 @@
     {{ .Summary }}
   </div>
 
-  <!-- FOOTER -->
-  <footer class="summary-item-footer">
-      <a href='{{ .RelPermalink }}'><nobr>Read more →</nobr></a>
-  </footer>
+  {{ if .Truncated }}
+  <div class="read-more-link">
+    <a href="{{ .RelPermalink }}">Read More ...</a>
+  </div>
+  {{ end }}
+
 
 </article>

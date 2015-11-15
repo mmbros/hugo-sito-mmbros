@@ -1,8 +1,15 @@
+// _theme.scss
+@import 'fonts';
+
+
 $color1: #7fc;
 $color2: #fc7;
 $color3: #c7f;
+$color4: gold;
+$color5: rgb(130,180,200);
 
-$theme-color: gold;
+$theme-color: $color5;
+
 
 $text-color: #666;
 $bg-color: #222;
@@ -28,6 +35,42 @@ a {
   }
 }
 
+
+// SINGLE PAGE
+
+.title {
+  font-size: 400%;
+}
+.description {
+  font-size: 150%;
+}
+
+// SUMMARY PAGE
+
+.summary-item-title {
+  > a {
+    font-size: 200%;
+    color: $title-color;
+  }
+}
+
+.summary-item-content {
+  margin: 0.5rem 0;
+}
+
+// LOGO
+
+.logo {
+  padding-left: 2rem;
+  font-size: 4rem;
+  font-weight: normal;
+  > a {
+    color: inherit;
+  }
+}
+
+// DRAFT
+
 .draft {
   display: inline-block;
   background-color: $theme-color;
@@ -37,18 +80,44 @@ a {
   margin-left: 0.7rem;
 }
 
-.summary-item-title {
-  > a {
-    font-size: 200%;
-    color: $title-color;
+// DATA
+.date, .reading-time, .tags {
+  &:before {
+
+    padding-right: 0.25rem;
+
+  	font-family: 'icomoon';
+    font-size: 80%;
+    color: darken($theme-color, 20%);
+
+  	speak: none;
+  	font-style: normal;
+  	font-weight: normal;
+  	font-variant: normal;
+  	text-transform: none;
+  	line-height: 1;
+
+  	// Better Font Rendering ===========
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+
   }
 }
 
-.logo {
-  padding-left: 2rem;
-  font-size: 4rem;
-  font-weight: normal;
-  > a {
-    color: inherit;
+.date {
+  &:before {
+    content: $icomoon-char-date;
+  }
+}
+
+.reading-time {
+  &:before {
+    content: $icomoon-char-time;
+  }
+}
+
+.tags {
+  &:before {
+    content: $icomoon-char-tags;
   }
 }

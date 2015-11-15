@@ -1,23 +1,42 @@
-{{ partial "head.html" . }}
+{{ partial "common_page_start.html" . }}
+<!--
 
-<div class="l-container">
+ header
+   .title
+   .description
+   .info
+     .date
+     .reading-time
+     .tags
+ article
 
-  <section class="l-nav">
-    {{ partial "main.html" . }}
-  </section>
+-->
 
-  <section class="l-content  note">
-    <h1 class="page-title">{{.Title}}</h1>
-    <ul class="tags">
-      {{ range .Params.tags }}
-        <li><a href="/tags/{{ . | urlize }}">{{ . }}</a></li>
-      {{ end }}
-    </ul>
+
+  <section class="l-content">
+
+    <!-- HEADER -->
+    <header>
+      <!-- TITLE -->
+      <h1 class="title">{{ .Title }}{{ if .Draft }}<span class="draft">DRAFT</span>{{ end }}</h1>
+      {{if .Description }}
+      <p class="description">{{ .Description }}</p>
+      {{end}}
+      <!-- INFO -->
+      <div class="info">
+        <!-- DATE -->
+        <div class="date">{{ .Date.Format "Mon January 2, 2006" }}</div>
+        <!-- READING-TIME -->
+        <div class="reading-time">Read in {{ .ReadingTime }} min</div>
+        <!-- TAGS -->
+        {{ partial "tags.html" .Params }}
+      </div>
+    </header>
+
     <article>
        {{ .Content }}
     </article>
+
   </section>
 
-</div>
-
-{{ partial "footer.html" . }}
+{{ partial "common_page_end.html" . }}

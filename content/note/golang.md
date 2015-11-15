@@ -2,7 +2,7 @@
 date = "2015-10-31T23:12:13+01:00"
 draft = true
 title = "The Go Programming Language"
-tags = ["golang"]
+tags = ["golang", "programming-language"]
 +++
 
 Go is an open source programming language that makes it easy to build simple,

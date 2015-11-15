@@ -1,19 +1,11 @@
-{{ partial "head.html" . }}
+{{ partial "common_page_start.html" . }}
 
-<div class="l-container">
+<section class="l-content summary">
+  <div class="summary-list">
+    {{ range first 10 .Data.Pages }}
+        {{ .Render "summary"}}
+    {{ end }}
+  </div>
+</section>
 
-  <section class="l-nav">
-    {{ partial "main.html" . }}
-  </section>
-
-  <section class="l-content summary">
-    <div class="summary-list">
-      {{ range first 10 .Data.Pages }}
-          {{ .Render "summary"}}
-      {{ end }}
-    </div>
-  </section>
-
-</div>
-
-{{ partial "footer.html" . }}
+{{ partial "common_page_end.html" . }}

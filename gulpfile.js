@@ -4,8 +4,11 @@
  * http://www.zell-weekeat.com/gulp-tutorial-2/
  * https://gist.github.com/austinpray/494b0b97c5b5e24f35eb
  */
+'use strict';
 
 var gulp = require('gulp');
+var child_process = require('child_process');
+
 var del = require('del');
 var sass = require('gulp-sass')
 var autoprefixer = require('gulp-autoprefixer')
@@ -71,6 +74,24 @@ gulp.task('sass', function() {
 });
 
 
+gulp.task('hugo-sass', function() {
+  return gulp.src(paths.sass.src)
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(paths.sass.dest));
+
+});
+
+gulp.task('hugo', ['hugo-sass'], function() {
+  // see: [Running Shell Commands](https://github.com/gulpjs/gulp/blob/4.0/docs/recipes/running-shell-commands.md)
+  gulp.watch(paths.sass.watch, ['hugo-sass']);
+  child_process.execFile('hugo', ['server','--watch']);
+  console.log('hugo server --watch');
+});
+
+
 /**
  * CLEAN
  */
@@ -115,6 +136,8 @@ gulp.task('serve', ['fonts', 'sass', 'html'], function() {
 //    gulp.watch(paths.html.watch).on('change', browserSync.reload);
     gulp.watch(paths.html.watch, ['html']);
 });
+
+
 
 
 gulp.task('default', ['serve']);
