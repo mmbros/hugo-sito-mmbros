@@ -1,19 +1,23 @@
 {{ partial "head.html" . }}
 
-<section class="home">
-  <a class="site-title" href="/">MMbros</a>
-</section>
+<div class="l-container">
 
+  <section class="l-nav">
+    {{ partial "main.html" . }}
+  </section>
 
-<section class="note">
-  <h1 class="page-title">{{.Title}}</h1>
-  <ul class="tags">
-    {{ range .Params.tags }}
-      <li><a href="/tags/{{ . | urlize }}">{{ . }}</a></li>
-    {{ end }}
-  </ul>
-  <article>
-     {{ .Content }}
-  </article>
-</section>
+  <section class="l-content  note">
+    <h1 class="page-title">{{.Title}}</h1>
+    <ul class="tags">
+      {{ range .Params.tags }}
+        <li><a href="/tags/{{ . | urlize }}">{{ . }}</a></li>
+      {{ end }}
+    </ul>
+    <article>
+       {{ .Content }}
+    </article>
+  </section>
+
+</div>
+
 {{ partial "footer.html" . }}

@@ -14,16 +14,15 @@ $susy: (
   )
 );
 
-
 @include border-box-sizing;
 
-.container {
+.l-container {
   @include container;
   @include clearfix;
 }
-.mainbar {
+.l-nav {
   @include span(2 of 10);
 }
-.summary {
+.l-content {
   @include span(6 of 10);
 }

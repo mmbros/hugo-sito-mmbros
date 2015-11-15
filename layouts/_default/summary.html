@@ -18,7 +18,10 @@
   <!-- HEADER -->
   <header>
     <!-- TITLE -->
-    <h3 class="summary-item-title"><a href="{{ .RelPermalink }}">{{ .Title }}{{ if .Draft }}<span class="draft"> :: DRAFT</span>{{end}}</a></h3>
+    <h3 class="summary-item-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if .Draft }}<span class="draft">DRAFT</span>{{ end }}</h3>
+    {{if .Description }}
+    <h4>{{ .Description }}</h4>
+    {{end}}
     <!-- INFO -->
     <div class="summary-item-info">
       <!-- DATE -->

@@ -1,16 +1,54 @@
+$color1: #7fc;
+$color2: #fc7;
+$color3: #c7f;
+
+$theme-color: gold;
+
+$text-color: #666;
+$bg-color: #222;
+$link-color: darken($theme-color, 20%);
+$title-color: darken($theme-color, 10%);
+
+
+
 body {
-  color: #666;
+  color: $text-color;
+  background-color: $bg-color;
 }
-.mainbar {
-  background-color: #7fc;
-}
+
 body > footer {
-  background-color: #fc7;
+  background-color: black;
+  padding: 2em;
 }
 a {
   text-decoration: none;
-  color: #4362df;
+  color: $link-color;
   &:hover {
     text-decoration: underline;
+  }
+}
+
+.draft {
+  display: inline-block;
+  background-color: $theme-color;
+  color: black;
+  font-size: 80%;
+  padding: 0rem 0.2rem;
+  margin-left: 0.7rem;
+}
+
+.summary-item-title {
+  > a {
+    font-size: 200%;
+    color: $title-color;
+  }
+}
+
+.logo {
+  padding-left: 2rem;
+  font-size: 4rem;
+  font-weight: normal;
+  > a {
+    color: inherit;
   }
 }
