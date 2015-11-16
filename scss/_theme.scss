@@ -32,6 +32,7 @@ a {
   color: $link-color;
   &:hover {
     text-decoration: underline;
+    color: $theme-color;
   }
 }
 
@@ -113,11 +114,5 @@ a {
 .reading-time {
   &:before {
     content: $icomoon-char-time;
-  }
-}
-
-.tags {
-  &:before {
-    content: $icomoon-char-tags;
   }
 }

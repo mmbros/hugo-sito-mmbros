@@ -17,7 +17,7 @@ $icomoon-char-date: "\e953";
 $icomoon-char-tags: "\e936";
 
 
-/*
+@if false { // remove the block
 [class^="icon-"], [class*=" icon-"] {
 	font-family: 'icomoon';
 	speak: none;
@@ -1506,4 +1506,4 @@ $icomoon-char-tags: "\e936";
 	content: "\eaea";
 }
 
-*/
+} // end

@@ -8,7 +8,11 @@
 
 
 $susy: (
+  columns: 10,
+//  container: 1200px,
+  gutters: 1/4,
   global-box-sizing: border-box,
+  debug: (image: hide),
   use-custom: (
     rem: true
   )
@@ -17,8 +21,8 @@ $susy: (
 @include border-box-sizing;
 
 .l-container {
-  @include container;
   @include clearfix;
+  @include container;
 }
 .l-nav {
   @include span(2 of 10);

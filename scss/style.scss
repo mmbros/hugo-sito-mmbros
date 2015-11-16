@@ -7,9 +7,27 @@
 
 .tags {
   @include reset-box-model();
-  li {
-    //@include horizontal-list()
+  &:before {
+    content: $icomoon-char-tags;
+//    margin-top: 3px;
+  }
+  > li {
     display: inline;
     list-style-type: none;
   }
+}
+
+.tag {
+  background-color: $text-color;
+  border-radius: 10px;
+  color: $bg-color;
+  font-size: 80%;
+  padding: 2px 8px 1px;
+
+  &:hover {
+    background-color: $theme-color;
+    color: $bg-color;
+    text-decoration: none;
+  }
+
 }
