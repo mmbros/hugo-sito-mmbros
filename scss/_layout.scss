@@ -1,32 +1,18 @@
-// _layout.scss
-@import 'mixins/clearfix';
-@import '../bower_components/susy/sass/susy';
-
-// NON FUNZIONA @import '../bower_components/breakpoint-sass/stylesheets/breakpoint';
-//@import '../bower_components/compass-breakpoint/stylesheets/breakpoint';
-//@import '../bower_components/sass-toolkit/stylesheets/toolkit';
-
-
-$susy: (
-  columns: 10,
-//  container: 1200px,
-  gutters: 1/4,
-  global-box-sizing: border-box,
-  debug: (image: hide),
-  use-custom: (
-    rem: true
-  )
-);
-
-@include border-box-sizing;
-
+$padding: 1em;
 .l-container {
-  @include clearfix;
-  @include container;
+  display: flex;
+  flex-flow: row wrap;
 }
-.l-nav {
-  @include span(2 of 10);
+.l-header {
+  flex: 1;
+  background-color: gold;
+  padding: $padding;
 }
 .l-content {
-  @include span(6 of 10);
+  flex: 4;
+  padding: $padding;
+}
+.l-footer {
+  flex: 1 100%;
+  padding: $padding;
 }

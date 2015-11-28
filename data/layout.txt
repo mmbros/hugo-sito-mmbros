@@ -1,0 +1,4 @@
+body
+  .l-header
+  .l-content
+  .l-footer

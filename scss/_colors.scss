@@ -1,0 +1,15 @@
+$theme-color: silver;
+$text-color: black;
+
+$bg-color: lighten($theme-color, 20%);
+$link-color: darken($theme-color, 20%);
+$title-color: darken($theme-color, 10%);
+
+
+$header-bg-color: $bg-color;
+$footer-bg-color: $bg-color;
+$content-bg-color: $bg-color;
+
+
+$article-bg-color: lighten($content-bg-color, 10%);
+$summary-bg-color: $article-bg-color;

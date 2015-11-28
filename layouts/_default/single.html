@@ -1,29 +1,30 @@
 {{ partial "common_page_start.html" . }}
 <!--
 
- header
-   .title
-   .description
-   .info
-     .date
-     .reading-time
-     .tags
- article
-
+.article
+   header
+     .article-title
+     .article-description
+     .article-info
+       .date
+       .reading-time
+       .tags
+  .article-content
 -->
 
+<section class="l-content">
 
-  <section class="l-content">
+  <article class="article">
 
     <!-- HEADER -->
     <header>
       <!-- TITLE -->
-      <h1 class="title">{{ .Title }}{{ if .Draft }}<span class="draft">DRAFT</span>{{ end }}</h1>
+      <h1 class="article-title">{{ .Title }}{{ if .Draft }}<span class="draft">DRAFT</span>{{ end }}</h1>
       {{if .Description }}
-      <p class="description">{{ .Description }}</p>
+      <p class="article-description">{{ .Description }}</p>
       {{end}}
       <!-- INFO -->
-      <div class="info">
+      <div class="article-info">
         <!-- DATE -->
         <div class="date">{{ .Date.Format "Mon January 2, 2006" }}</div>
         <!-- READING-TIME -->
@@ -33,10 +34,13 @@
       </div>
     </header>
 
-    <article>
+    <!-- CONTENT -->
+    <div class="article-content">
        {{ .Content }}
-    </article>
+    </div>
 
-  </section>
+  </article>
+
+</section>
 
 {{ partial "common_page_end.html" . }}

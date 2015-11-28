@@ -1,21 +1,5 @@
 // _theme.scss
-@import 'fonts';
-
-
-$color1: #7fc;
-$color2: #fc7;
-$color3: #c7f;
-$color4: gold;
-$color5: rgb(130,180,200);
-
-$theme-color: $color5;
-
-
-$text-color: #666;
-$bg-color: #222;
-$link-color: darken($theme-color, 20%);
-$title-color: darken($theme-color, 10%);
-
+@import 'variables';
 
 
 body {
@@ -23,10 +7,18 @@ body {
   background-color: $bg-color;
 }
 
-body > footer {
-  background-color: black;
-  padding: 2em;
+.l-header {
+  background-color: $header-bg-color;
 }
+.l-content {
+  background-color: $content-bg-color;
+}
+.l-footer {
+  background-color: $footer-bg-color;
+}
+
+
+
 a {
   text-decoration: none;
   color: $link-color;
@@ -39,14 +31,30 @@ a {
 
 // SINGLE PAGE
 
-.title {
+.article {
+  background-color: $article-bg-color;
+  max-width: $max-width;
+  margin: 0 0 $gutter 0;
+  padding: $gutter;
+  border-radius: $gutter/2;
+}
+
+.article-title {
   font-size: 400%;
 }
-.description {
+.article-description {
   font-size: 150%;
 }
 
-// SUMMARY PAGE
+// SUMMARY
+
+.summary-item {
+  background-color: $summary-bg-color;
+  max-width: $max-width;
+  margin: 0 0 $gutter 0;
+  padding: $gutter;
+  border-radius: $gutter/2;
+}
 
 .summary-item-title {
   > a {
@@ -56,13 +64,14 @@ a {
 }
 
 .summary-item-content {
-  margin: 0.5rem 0;
+  margin: 2*$gutter 0 0 0;
 }
 
 // LOGO
 
 .logo {
-  padding-left: 2rem;
+  padding: 0;
+  margin: 0;
   font-size: 4rem;
   font-weight: normal;
   > a {
