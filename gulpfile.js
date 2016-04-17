@@ -17,6 +17,7 @@ var sourcemaps = require('gulp-sourcemaps')
 //var minifycss = require('gulp-minify-css')
 var browserSync = require("browser-sync").create();
 
+var http_port = 3000;
 
 var paths = {
   sass: {
@@ -87,8 +88,8 @@ gulp.task('hugo-sass', function() {
 gulp.task('hugo', ['hugo-sass'], function() {
   // see: [Running Shell Commands](https://github.com/gulpjs/gulp/blob/4.0/docs/recipes/running-shell-commands.md)
   gulp.watch(paths.sass.watch, ['hugo-sass']);
-  child_process.execFile('hugo', ['server','--watch']);
-  console.log('hugo server --watch');
+  child_process.execFile('hugo', ['server','--watch', '--port='+http_port  ]);
+  console.log('hugo server --watch --port='+http_port);
 });
 
 
@@ -129,7 +130,7 @@ gulp.task('serve', ['fonts', 'sass', 'html'], function() {
           baseDir: './public',
           index: "index.html"
       },
-      port: 3000
+      port: http_port
     });
 
     gulp.watch(paths.sass.watch, ['sass']);
@@ -140,4 +141,4 @@ gulp.task('serve', ['fonts', 'sass', 'html'], function() {
 
 
 
-gulp.task('default', ['serve']);
+gulp.task('default', ['hugo']);

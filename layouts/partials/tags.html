@@ -1,4 +1,7 @@
 <!-- TAGS -->
 {{ if .tags }}
-<ul class="tags">{{ range .tags }}<li><a href="/tags/{{ . | urlize }}" class="tag">{{ . }}</a></li>{{ end }}</ul>
+<ul class="tags">{{ range .tags }}<li>
+<a href="/tags/{{ . | urlize }}" class="tag">{{ . }}</a>
+</li>{{ end }}
+</ul>
 {{ end }}

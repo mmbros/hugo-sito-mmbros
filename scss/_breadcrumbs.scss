@@ -1,0 +1,24 @@
+@import 'variables';
+@import 'mixins/reset';
+
+.breadcrumbs {
+  @include reset-box-model();
+
+  > li {
+    display: inline-block;
+    &:before {
+      content: ">";
+      color: gray;
+    }
+  }
+
+  > li:first-child > a {
+//    color: yellow;
+    //content: "hidden";
+  }
+}
+
+.home:before {
+  font-family: 'icomoon';
+  content: $icomoon-char-home;
+}

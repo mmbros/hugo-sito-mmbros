@@ -1,6 +1,13 @@
 {{ partial "common_page_start.html" . }}
 
-  <section class="l-content summary">
+  <section class="l-content">
+
+    <ul class="breadcrumbs">
+      <li><a href="/" class="home">Homepage</a></li>
+      <li><a href="{{ .URL }}">{{ .Data.Plural | upper}}</a></li>
+      <li>{{ .Title }}</li>
+    </ul>
+
     <div>
      <h1 id="title"><a href="{{ .URL }}">{{ .Data.Plural }}</a> &gt; {{ .Title }}</h1>
       {{ range .Data.Pages }}
