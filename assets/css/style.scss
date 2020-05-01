@@ -1,0 +1,276 @@
+$debug: 0;
+
+@import "mixins";
+@import "themes/theme";
+
+@import "base/reset";
+@import "base/mono";
+@import "base/links";
+
+@import "layout/media-query";
+@import "layout/grid";
+
+@import "component/front";
+@import "component/toc";
+@import "component/draft";
+@import "component/logo";
+@import "component/breadcrumb";
+@import "component/cards";
+@import "component/taxo";
+
+body {
+	@include l_container();
+	@include tbcolor($text-color, $back-color);
+	font-family: $font-family;
+	font-size: $text-bs;
+	line-height: $line-height;
+
+	// https://stackoverflow.com/questions/18548465/prevent-scroll-bar-from-adding-up-to-the-width-of-page-on-chrome
+	overflow-y: scroll;
+	@if $debug > 0 {
+		background-image: linear-gradient(rgba(250, 0, 0, .17) 1px, transparent 1px);
+		background-size: 1px $vunit;
+	}
+}
+ul, ol {
+	margin-left: 1.5em;
+}
+
+p, li {
+	margin-top: $vunit/2;
+}
+// header
+h1, h2, h3, h4, h5 {
+	color: $title-color;
+	line-height: $header-line-height;
+	//margin-bottom: $vunit;
+	margin-top: $vunit;
+	//margin-bottom: $vunit;
+	&:first-child {
+		margin-top: 0;
+	}
+	@if $debug > 0 {
+		background-color: rgba(0,0,255,0.2);
+	}
+}
+h1 {
+	font-size: $text-xxl;
+}
+h2 {
+	font-size: $text-xl;
+}
+h3 {
+	font-size: $text-lg;
+}
+h4 {
+	font-size: $text-md;
+}
+table {
+	border-collapse: collapse;
+	margin-top: 1em;
+}
+thead {
+	border-bottom: 1px solid $color-3-2;
+}
+th, td {
+	padding-right: 1.0em;
+	vertical-align: top;
+
+	&:last-child {
+		padding-right: 0;
+	}
+}
+
+a {
+	color: $link-color;
+	text-decoration: none;
+
+	display: inline-block;
+	padding: 0 .2rem;
+	margin: 0 -.2rem;
+	border-radius: .2rem;
+
+	&:hover, &:focus {
+		background-color: $link-back-color;
+		text-decoration: underline;
+	}
+}
+
+.header {
+	@include l_header()
+	@include tbcolor($header-text-color, $header-back-color);
+	padding: $gvo $gho $gvi $gho;
+}
+.front {
+	@include l_front();
+	@include tbcolor($front-text-color, $front-back-color);
+	@include front();
+	padding: $gvi $gho;
+}
+.body {
+	@include l_body();
+	padding: $gvi $gho;
+}
+.toc {
+	@include l_toc();
+	@include toc();
+	padding: $gvi $gho;
+	@if $debug > 1 {
+		background-color: rgba(250,200,0,0.3);
+	}
+}
+.footer {
+	@include l_footer()
+	@include tbcolor($footer-text-color, $footer-back-color);
+	padding: $gvi $gho $gvo $gho;
+}
+
+@include media-query(medium) {
+	.header, .front, .toc, .body, .footer {
+		$hpad: calc((100% - #{$grid-max-content-width} + #{2*$gvo})/2 );
+		padding-left: $hpad;
+		padding-right: $hpad;
+	}
+}
+@include media-query(large) {
+	body {
+		@include l_container(large);
+	}
+	.toc--container {
+		top: 0;
+		position: sticky;
+	}
+	.toc {
+		padding-right: $ghi;
+	}
+	.body {
+		padding-left: $ghi;
+	}
+}
+// if debug, show the media query size after the logo
+@if $debug > 0 {
+	.header h2:after {
+		@extend %badge;
+		background-color: yellow;
+		color: red;
+		content: "small";
+		font-size: $text-bs;
+	}
+	@include media-query(medium) {
+		.header h2:after {
+			content: "medium";
+		}
+	}
+	@include media-query(large) {
+		.header h2:after {
+			content: "large";
+		}
+	}
+}
+
+
+.breadcrumb {
+	@extend %breadcrumb;
+}
+
+
+em {
+	font-style: normal;
+	font-weight: bold;
+}
+var {
+	color: grayscale($text-color);
+}
+.functions {
+	tr:not(:first-child) {
+		border-top: 1px solid  mix($color-2, $color-3, 20%);
+	}
+	//tr:not(:last-child) {
+		//border-bottom: 1px solid mix($color-2, $color-3, 20%);
+	//}
+	th {
+		text-align: left;
+	}
+	td, th {
+		padding: .5em 0;
+	}
+	.examples {
+		margin-top: 0;
+		margin-left: 1em;
+		caption {
+			margin-left: -1em;
+			text-align: left;
+			font-style: italic;
+			&:after {
+				content: ":";
+			}
+		}
+		tr {
+			border: none;
+		}
+		td {
+			padding: 0;
+
+			&:first-child {
+				padding-right: 1em;
+				//min-width: 30%;
+			}
+		}
+
+	} 
+
+}
+
+.tabs {
+	& > input {
+		display: none;
+	}
+	& > label {
+		display: inline-block;
+	}
+}
+
+.tab {
+	display: none;
+}
+.tab1:checked ~ .tab.content1,
+.tab2:checked ~ .tab.content2,
+.tab3:checked ~ .tab.content3,
+.tab4:checked ~ .tab.content4,
+.tab5:checked ~ .tab.content5 { display: block; }
+/*
+input + label {
+  border: 1px solid #999;
+  background: #EEE;
+  padding: 4px 12px;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  top: 1px;
+}
+input:checked + label {
+  background: #FFF;
+  border-bottom: 1px solid transparent;
+}
+input ~ .tab {
+  border-top: 1px solid #999;
+  padding: 12px;
+}
+*/
+
+.recipe{
+	$h: 3px;
+	$c: $color-2;
+
+	label {
+		text-transform: lowercase;
+		font-variant: small-caps;
+		font-size: $text-md;
+		padding: 1em;
+		color: $c;
+		border-bottom: $h solid transparent;
+	}
+	input:checked + label {
+		border-bottom: $h solid $c;
+	}
+}
+

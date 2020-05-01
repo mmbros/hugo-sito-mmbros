@@ -1,0 +1,15 @@
+%badge {
+	border-radius: 1em;
+	//font-size: (100%  / $text-scale-ratio / $text-scale-ratio / $text-scale-ratio);
+	//font-size: $text-bs;
+	font-weight: normal;
+	margin-left: .5em;
+	padding: .1em .5em;
+	vertical-align: middle;
+}
+.draft {
+	@extend %badge;
+	background-color: $color-3;
+	color: $color-2;
+	font-size: $text-bs;
+}

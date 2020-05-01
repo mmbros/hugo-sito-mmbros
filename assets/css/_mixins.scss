@@ -1,0 +1,5 @@
+
+@mixin tbcolor($txt, $bkg) {
+	background-color: $bkg;
+	color: $txt;
+}

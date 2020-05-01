@@ -1,0 +1,38 @@
+.cards {
+	list-style: none;
+	margin: $gvi 0 0 0;
+
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(\min(20em,100%), 1fr) );
+	grid-gap: $gvi $ghi;
+}
+
+.card {
+	background-color: $card-back-color;
+	border-radius: .5rem;
+	margin: 0;
+
+	a {
+		display: block;
+		border-radius: .5rem;
+		padding: $gvi $ghi;
+		text-decoration: none;
+		height: 100%;
+
+		&:hover, &:focus {
+			background-color: $link-back-color;
+		}
+	}
+	h3 {
+		color: $card-title-color;
+		background-color: inherit;
+		.subtitle {
+			font-size: (100% / $text-scale-ratio);
+		}
+	}
+	p {
+		margin-top: $gvi;
+		color: $text-color;
+	}
+}
+

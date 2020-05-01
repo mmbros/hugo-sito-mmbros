@@ -1,0 +1,54 @@
+$mono-padding: .1em .2em;
+$mono-radius: .2em;
+
+kbd {
+	padding: $mono-padding;
+	border: 2px solid #cdcdcd;
+	border-radius: 2px;
+}
+
+%kbd {
+	border-radius: $mono-radius;
+	box-shadow: 0 0 .2em 0 rgba(0,0,0,0.45);
+	margin: 0 .1em; 
+	padding: $mono-padding;
+}
+
+// include solo gli elementi senza classe
+// per non ridefinire i code gestiti da highlight
+code:not([class]) {
+	color: $code-color;
+	background-color: $code-background-color;
+	border-radius: $mono-radius;
+	padding: $mono-padding;
+	word-wrap: break-word;
+	//font-size: $code-font-size;
+}
+
+pre {
+	background-color: $code-background-color;
+	border-radius: $mono-radius;
+	padding: 0.2em .5em;
+}
+
+pre code {
+
+	display: inline-block;
+	min-width: 100px;
+	max-width: 100%;
+	overflow-x: scroll;
+	white-space: pre;
+	word-break: normal;
+
+	&:not([class]) {
+		background-color: transparent;
+	}
+}
+
+blockquote  {
+	background-color: $blockquote-background-color;
+	border-left: 4px solid $text-color;
+	font-style: italic;
+	padding: .8em 1em .4em 1em;
+}
+

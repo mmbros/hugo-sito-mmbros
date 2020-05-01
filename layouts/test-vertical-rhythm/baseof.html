@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="{{ .Site.LanguageCode }}">
+<meta charset="utf-8">
+<title>{{ block "title" . }}{{ .Title }} – {{ .Site.Title }}{{ end }}</title>
+<meta name="description" content="{{if .IsHome}}{{ $.Site.Params.description }}{{else}}{{.Description}}{{end}}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{{ $style := resources.Get "css/vertical-rhythm.scss" | resources.ToCSS }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+</head>
+
+<body>
+
+	{{ .Content }}
+
+
+</body>
+
+</html>

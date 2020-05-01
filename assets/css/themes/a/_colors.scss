@@ -1,0 +1,84 @@
+// Colors
+
+//$white:     #fff !default;
+//$black:     #000 !default;
+//$light:  #f4f1d3 !default;
+//$dark:   #3d405b !default;
+//$red:    #e07a5f !default;
+//$green:  #81b29a !default;
+//$yellow: #f2cc8f !default;
+
+
+// LOCAL THEME COLORS
+$color-1: #1ef0a5; // green
+$color-2: #052D5A; // dark blue
+$color-3: #eee;    // white/gray
+
+$color-1-dark: darken($color-1, 20);
+$color-1-light: lighten($color-1, 30);
+
+
+// COLORS
+
+$back-color: $color-3;
+$text-color: mix($color-2, $color-3, 80%);
+$title-color: $color-2;
+
+
+
+
+$link-color: $color-1-dark;
+$link-back-color: $color-1-light;
+
+// Usa una trasparenza in modo che sia cumulabile (es Code all'interno di Blockquote)
+$back-color-alt: rgba($color-2, .075);
+
+$color-2-1: mix($color-2, $color-1);
+$color-3-2: mix($color-3, $color-2);
+
+
+// .header
+$header-text-color: $color-2;
+$header-back-color: $color-1;
+
+// .front
+$front-text-color: $color-3;
+$front-back-color: $color-2;
+$front-title-color: $color-1;
+
+// .footer
+$footer-text-color: $color-3;
+$footer-back-color: $color-2;
+
+// .breadcrumb
+$breadcrumb-text-color: $color-2-1;
+$breadcrumb-link-text-color: $color-2;
+$breadcrumb-sep-color: $color-3;
+
+// .cards
+$card-title-color: mix($color-2, $color-1, 75%);
+$card-title-hover-color: mix($color-1, $color-2, 90%);
+$card-back-color: lighten($color-3, 5%);
+
+// Article
+$article-header-color: $color-1;
+$article-header-background-color: $color-2;
+$article-description-color: $color-3;
+$article-cotegory-colors: $color-3;
+// Article Info
+$article-info-color-label: mix($color-3,$color-2); 
+$article-info-color-value: $color-3;
+$article-info-color-border: lighten($color-2, 0);
+
+
+// Code
+$code-color: #c7254e;
+$code-background-color: #f9f2f4;
+$code-background-color: inherit;
+
+$code-color: mix($color-2, $back-color, 65%);
+$code-background-color: $back-color-alt;
+
+// Blockquote
+$blockquote-background-color: $back-color-alt;
+

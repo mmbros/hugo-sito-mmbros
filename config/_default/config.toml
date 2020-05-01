@@ -1,0 +1,29 @@
+bdivaseURL = "/"
+languageCode = "it"
+title = "MMbros's site"
+
+# theme = "hugo-theme-basic"
+
+# Include drafts when building.
+buildDrafts = true
+
+# Enable this to make all relative URLs relative to content root.
+# Note that this does not affect absolute URLs.
+#
+# relativeURLs = false -> /css/main.css
+# relativeURLs = true  -> ../../css/main.css
+
+relativeURLs = false
+
+enableEmoji = false
+
+staticDir = ["static", "static/favicon"]
+
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+# [permalinks]
+  # categories = "/notes/:section/"
+  # tgs = "/notes/:section/"

@@ -1,0 +1,152 @@
+$back-color: #ddd;
+
+
+$debug: 1;
+$p-indented: false;
+
+
+$line-height: 1.9;
+
+
+// base font size
+$text-bs: 1rem;
+
+// text scale
+$text-scale-ratio: 1.4;
+
+$text-sm: $text-bs / $text-scale-ratio;
+$text-xs: $text-sm / $text-scale-ratio;
+$text-md: $text-bs * $text-scale-ratio;
+$text-lg: $text-md * $text-scale-ratio;
+$text-xl: $text-lg * $text-scale-ratio;
+$text-xxl: $text-xl * $text-scale-ratio;
+
+// vstep è l'unità verticale minima. Tutte le altre diensioni verticali
+// devono esser eun multiplo di questa
+$vstep: $line-height * $text-bs / 1;
+
+
+@mixin set-header($font-size, $top-units:1, $extra:0) {
+	$mult: ceil($font-size / $vstep);
+
+	font-size: $font-size;
+	line-height: ($mult + $extra)* $vstep;
+	margin-top: $top-units * $vstep;
+}
+/*
+@mixin set-header($font-size, $vunits) {
+	$mult: ceil($font-size / $vstep);
+	font-size: $font-size;
+	//line-height: $vunits*$line-height * $text-bs/$font-size;
+	//line-height: $vunits*$vstep/$font-size;
+	//line-height: 1.2;
+	line-height: $mult * $vstep;
+	margin-top: ($vunits - $mult) * $vstep;
+}
+*/
+// aux
+.tiny-list {
+	list-style: inside;
+	margin-left: 0;
+	li+li {
+		margin-top: 0;
+	}
+}
+
+
+
+html {
+	box-sizing: border-box;
+}
+
+*, 
+*::before,
+*::after {
+	box-sizing: inherit; 
+	margin: 0;
+	padding: 0;
+}
+
+// FULL HEIGHT PAGE
+html, body {
+	height: 100%;
+}
+
+body {
+	@if $debug > 0 {
+		background-image: linear-gradient(rgba(250, 0, 0, .17) 1px, transparent 1px);
+		background-size: 1px $vstep;
+	}
+	font-family: sans-serif;
+	font-size: $text-bs;
+	padding: 0 3em;
+	background-color: $back-color;
+	color: #333;
+	line-height: $line-height;
+	margin: 0 auto 0 auto;
+}
+#cols {
+	columns: 3;
+	//column-width: 50em;
+	column-rule: 1px solid gray;
+
+}
+
+ul, ol {
+	//list-style-position: inside;
+	padding-left: 0em;
+	@if $debug > 2 {
+		background-color: rgba(1,1,255,0.1);
+	}
+}
+ul {
+	margin-left: 0.9em;
+	//margin-left: 1.3em;
+}
+ol {
+	margin-left: 1.3em;
+}
+
+@if $p-indented {
+	p + p {
+		text-indent: 2em;
+	}
+	h1, h2, h3, h4, h5 {
+		margin-top: $vstep;
+	}
+} @else {
+	p, li {
+		margin-top: $vstep;
+	}
+	h1, h2, h3, h4, h5 {
+		margin-top: $vstep;
+	}
+	
+}
+
+
+h1, h2, h3, h4, h5 {
+	@if $debug > 1 {
+		background-color: rgba(255,255,0, .2);
+	}
+	font-family: serif;
+	letter-spacing: 1px;
+	color: black;
+}
+h1 {
+	@include set-header($text-xxl, 1);
+	//font-size: $text-xl;
+	//line-height: 5*$line-height * $text-bs/$text-xl;
+}
+h2 {
+	@include set-header($text-xl, 2);
+}
+h3 {
+	@include set-header($text-lg, 2, 0);
+}
+h4 {
+	@include set-header($text-md, 2);
+}
+h5 {
+	@include set-header($text-bs, 1);
+}

@@ -1,0 +1,56 @@
+$color-sep-term: lighten($color-2, 70);
+$color-sep-pages: $color-sep-term;
+$back-color-highlight: lighten($color-1, 30);
+
+$hpad: 4px;
+$seppad: 4px;
+$border: 4px;
+$vgap: 10px;
+
+.taxo-terms-pages {
+	border-collapse: separate;
+	border-spacing: 0 $vgap;
+
+
+	th {
+		//background: linear-gradient(to left, transparent, lighten($secondary-color, 75));
+		background-color: transparent;
+		border: none;
+		text-align: right;
+		padding-right: $hpad+$seppad;
+		border-right: $border solid $color-sep-term;
+		vertical-align: top;
+	}
+	td {
+		border: none;
+		padding: 0 0 0 $seppad;;
+	}
+	a {
+		@extend %special-link;
+		margin: 0;
+		padding: $hpad;
+	}
+}
+
+
+.ul-pages {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+	}
+
+	li:not(:last-child):after {
+		//background-color: #c7c;
+		color: $color-sep-pages;
+		content: "|";
+		margin: 0;
+		padding: 0 $seppad;
+	}
+}
+
+

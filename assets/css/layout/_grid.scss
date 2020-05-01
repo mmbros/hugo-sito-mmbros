@@ -1,0 +1,80 @@
+/*
+
+Page top sections:
+
+	container
+	- header
+	- front
+	- toc
+	- body
+	- footer
+
+Used variables:
+
+	- $margin-baseline
+	- $max-content-width
+	- $min-horiz-padding
+
+$grid-padding-vert: 20px;
+$grid-padding-horiz: 20px;
+$grid-max-content-width: 900px;
+*/
+
+
+
+@mixin l_common($media: small) {
+	@if $media == medium {
+		padding: $grid-padding-vert  calc(50% - #{$grid-max-content-width/2} - #{$grid-padding-horiz});
+	}
+	@else { // default
+		//margin: 0; //  center content horizonally
+		padding: $grid-padding-vert $grid-padding-horiz; 
+	}
+}
+
+@mixin l_container($media: small) {
+	@if $media == small {
+		//margin: 0;
+		min-height: 100%;
+	
+		display: grid;
+		grid-gap: 0;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto auto 1fr auto;
+		grid-template-areas:
+			'header'
+			'front'
+			'toc'
+			'body'
+			'footer';
+	}
+	@else if $media = large {
+		grid-template-columns: 1fr 3fr;
+		grid-template-rows: auto auto 1fr auto;
+		grid-template-areas:
+			'header header'
+			'front  front'
+			'toc     body'
+			'footer footer';
+	}
+}
+
+@mixin l_header () {
+	grid-area: header;
+}
+@mixin l_front () {
+	grid-area: front;
+}
+@mixin l_toc () {
+	grid-area: toc;
+}
+@mixin l_body () {
+	grid-area: body;
+
+	// [Prevent content from expanding grid items](https://stackoverflow.com/questions/43311943/prevent-content-from-expanding-grid-items)
+	// [Preventing a Grid Blowout](https://css-tricks.com/preventing-a-grid-blowout/)
+	min-width: 0;
+}
+@mixin l_footer () {
+	grid-area: footer;
+}

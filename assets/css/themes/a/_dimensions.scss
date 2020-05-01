@@ -1,0 +1,50 @@
+// base liner-height
+$line-height: 1.6;
+$header-line-height: 1.2;
+
+// text scale
+$text-scale-ratio: 1.3;
+
+// base font size
+$text-bs: 1.0rem;
+
+$text-sm: $text-bs / $text-scale-ratio;
+$text-xs: $text-sm / $text-scale-ratio;
+$text-md: $text-bs * $text-scale-ratio;
+$text-lg: $text-md * $text-scale-ratio;
+$text-xl: $text-lg * $text-scale-ratio;
+$text-xxl: $text-xl * $text-scale-ratio;
+
+
+// vunit è l'unità verticale minima.
+// Tutte le altre diensioni verticali devono essere multiple di questa
+$vunit: $line-height * $text-bs / 1;
+
+//$margin-baseline: #{$baseline + "rem"};
+//$margin-bottom: #{1 * $baseline + "rem"};
+//$margin-top: #{2 * $baseline + "rem"}; 
+
+$gvo: 1rem; // grid-vert-outer
+$gho: $gvo; // grid-horiz-outer
+$gvi: 1rem; // grid-vert-inner
+$ghi: $gvi; // grid-horiz-inner
+
+//$grid-padding-vert: 1rem;
+//$grid-padding-horiz: 1rem;
+$grid-max-content-width: 900px;
+
+$margin-bottom: $vunit;
+$margin-baseline: $vunit;
+$margin-top: $vunit;
+
+
+
+/*
+@mixin set-header($font-size, $top-units:1, $extra-line-height-units:0) {
+	$mult: ceil($font-size / $vunit);
+
+	font-size: $font-size;
+	//line-height: ($mult + $extra-line-height-units) * $vunit;
+	margin-top: $top-units * $vunit;
+}
+*/

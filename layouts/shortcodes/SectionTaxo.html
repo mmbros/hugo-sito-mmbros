@@ -1,0 +1,53 @@
+{{/*
+		DEBUG 
+<dl>
+	<dt>type</dt>
+	<dd>{{ .Get "type" }}</dd>
+	<dt>taxo</dt>
+	<dd>{{ .Get  "taxo" }}</dd>
+	<dt>class</dt>
+	<dd>{{ .Get  "class" }}</dd>
+	<dt>classcount</dt>
+	<dd>{{ .Get  "classcount" }}</dd>
+	<dt>labelnotaxo</dt>
+	<dd>{{ .Get  "labelnotaxo" }}</dd>
+	<dt>classnotaxo</dt>
+	<dd>{{ .Get  "classnotaxo" }}</dd>
+</dl>
+*/}}
+{{ $typeName := .Get "type" }}
+{{ $taxoName := .Get "taxo" }}
+{{ $class := or (.Get "classtable") "taxo-count" }}
+{{ $classCount := or (.Get "classcount") "badge" }}
+{{ $labelNoTaxo := or (.Get "labelnotaxo") "(null)" }}
+{{ $classNoTaxo := or (.Get "classnotaxo") "notaxo" }}
+{{ $taxo := index .Site.Taxonomies $taxoName }}
+<ul class="{{$class}}">
+{{/*
+
+
+*/}}
+	{{- range $value := $taxo.Alphabetical -}}
+		{{- $pages := where $value.Pages.ByTitle ".Type" $typeName -}}
+		{{- $term := partial "GetTermPage" (slice $taxoName $value.Term) }}
+		{{- with $pages -}}
+		<li>
+			<a href="{{ $term.RelPermalink }}">{{ $term.Title }} <span class="{{$classCount}}">{{ len . }}</span></a>
+		</li>
+		{{ end }}
+	{{ end }}{{/* range */}}
+{{/*
+
+		Pages without taxonomy
+
+			No Term | Page1, Page2, ...
+
+*/}}
+	{{ $sectionPages := where .Site.RegularPages ".Type" $typeName }}
+	{{ $pages := where $sectionPages.ByTitle (printf ".Params.%s" $taxoName) "==" nil }}
+	{{ with $pages }}
+		<li class="{{ $classNoTaxo }}">
+			{{ $labelNoTaxo }} <span class="{{$classCount}}">{{ len $pages }}</span>
+		</li>
+	{{ end }}
+</ul>

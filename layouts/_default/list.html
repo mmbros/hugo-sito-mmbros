@@ -1,0 +1,80 @@
+{{ define "frontxxxxxx" }}
+<header class="front">
+	<h1>{{.Title}}</h1>
+	<!-- "{{.Content}}" pulls from the markdown content of the corresponding _index.md -->
+	{{.Content}}
+</header>
+{{ end }}
+
+
+
+{{ define "front" }}
+	{{ partial "front" . }}
+{{ end }}
+
+
+
+{{ define "body" }}
+	{{ .Content }}
+	<h2>Elenco delle pagine</h2>
+	{{ template "pages-to-cards" .Pages.ByTitle }}
+{{ end }}{{/* define */}}
+
+
+
+{{ define "breadcrumb" }}
+	{{ partial "breadcrumb" . }}
+{{ end }}
+
+
+{{ define "pages-to-cards" }}
+{{ with . }}
+<ul class="cards">
+{{ range . }}
+<li class="card">
+	<a href="{{.RelPermalink}}">
+		<h3>
+			{{- .Title -}}
+			{{- with .Params.Subtitle -}}
+				<div class="subtitle">{{.}}</div>
+			{{- end -}}
+		</h3>
+{{with .Params.Description}}
+		<p>{{.}}</p>
+{{end}}
+	</a>
+</li>
+{{ end }}{{/* range */}}
+</ul>
+{{ else }}
+<div>Nessuna pagina trovata.</div>
+{{ end }}{{/* with .Pages */}}
+
+{{ end }}{{/* define */}}
+
+
+{{ define "pages-to-cards-old" }}
+{{ with . }}
+<ul class="cards">
+{{ range . }}
+<li class="card">
+	<h3>
+		<a href="{{.RelPermalink}}">
+			{{- .Title -}}
+			{{- with .Params.Subtitle -}}
+				<div class="subtitle">{{.}}</div>
+			{{- end -}}
+		</a>
+	</h3>
+{{with .Params.Description}}
+		<p>{{.}}</p>
+{{end}}
+</li>
+{{ end }}{{/* range */}}
+</ul>
+{{ else }}
+<div>Nessuna pagina trovata.</div>
+{{ end }}{{/* with .Pages */}}
+
+{{ end }}{{/* define */}}
+

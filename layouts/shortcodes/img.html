@@ -1,0 +1,7 @@
+{{ $img := $.Page.Resources.GetMatch ( .Get "src" ) }}
+{{ if $img }}
+<img src="{{ $img.RelPermalink }}" />
+{{ else }}
+{{ partial "error" (printf "Risorsa non trovata: shortcode=\"img\" src=\"%s\"" (.Get "src")) }}
+
+{{ end }}

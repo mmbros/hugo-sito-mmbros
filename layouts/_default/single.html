@@ -1,46 +1,12 @@
-{{ partial "common_page_start.html" . }}
-<!--
+{{ define "front" }}
+	{{ partial "front" . }}
+{{ end }}
 
-.article
-   header
-     .article-title
-     .article-description
-     .article-info
-       .date
-       .reading-time
-       .tags
-  .article-content
--->
+{{ define "body" }}
+	{{ partial "body" . }}
+{{ end }}
 
-<section class="l-content">
+{{ define "breadcrumb" }}
+	{{ partial "breadcrumb" . }}
+{{ end }}
 
-  <article class="article">
-
-    <!-- HEADER -->
-    <header>
-      <!-- TITLE -->
-      <h1 class="article-title">{{ .Title }}{{ if .Draft }}<span class="draft">DRAFT</span>{{ end }}</h1>
-      {{if .Description }}
-      <p class="article-description">{{ .Description }}</p>
-      {{end}}
-      <!-- INFO -->
-      <div class="article-info">
-        <!-- DATE -->
-        <div class="date">{{ .Date.Format "Mon January 2, 2006" }}</div>
-        <!-- READING-TIME -->
-        <div class="reading-time">Read in {{ .ReadingTime }} min</div>
-        <!-- TAGS -->
-        {{ partial "tags.html" .Params }}
-      </div>
-    </header>
-
-    <!-- CONTENT -->
-    <div class="article-content">
-       {{ .Content }}
-    </div>
-
-  </article>
-
-</section>
-
-{{ partial "common_page_end.html" . }}

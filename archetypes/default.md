@@ -1,6 +1,11 @@
-+++
-Title = ""
-Description = ""
-Tags = []
-Categories = []
-+++
+---
+title: "{{ replace .Name "-" " " | title }}"
+subtitle: ""
+description: ""
+date: {{ .Date }}
+# lastmod: 
+# categories: []
+# tags: []
+draft: true
+---
+

@@ -1,13 +1,38 @@
-{{ partial "common_page_start.html" . }}
+{{ define "body" }}
 
-<section class="l-content">
-  <div>
-   <h1 id="title">{{ .Title }}</h1>
-   {{ $data := .Data }}
-    {{ range $key,$value := .Data.Terms.ByCount }}
-    <h2><a href="/{{ $data.Plural }}/{{ $value.Name | urlize }}"> {{ $value.Name }} </a> {{ $value.Count }} </h2>
-    {{ end }}
-  </div>
-</section>
+<h1>{{ .Data.Plural }}</h1>
 
-{{ partial "common_page_end.html" . }}
+<table class="taxo-terms-pages">
+	<tbody>
+{{/*
+		Pages by Term:
+
+			     | 
+			Term | Page1 | Page2 | ...
+			     | 
+
+*/}}
+	{{- range .Data.Terms.Alphabetical -}}
+		<tr>
+			<th><a href="{{ .Page.RelPermalink }}">{{ .Term }}</a></th>
+			<td>{{ template "ul-pages" (dict "pages" .Pages "class" "ul-pages") }}</td>
+		</tr>
+	{{ end }}{{/* range */}}
+	</tbody> 
+</table>
+
+{{ end }}
+
+
+{{ define "ul-pages" }}
+{{ if .pages }}
+<ul{{ with .class }} class="{{.}}"{{ end }}>
+	{{- range .pages -}}
+	<li><a href="{{.RelPermalink}}">{{.Title}}</a></li>
+	{{- end -}}{{/* range */}}
+</ul>
+{{ else }}
+0 pages
+{{ end }}{{/* if */}}
+{{ end }}{{/* define */}}
+

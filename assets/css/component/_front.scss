@@ -1,0 +1,85 @@
+/*
+	front
+		categories?
+		title
+		subtitle?
+		description?
+		info
+			date
+			reading-time
+			tags*
+*/
+
+$dy: $gvi;
+
+@mixin front() {
+
+	&--categories {
+		list-style: none;
+		margin: 0 0 $dy 0;
+
+		font-variant: small-caps;
+		font-weight: bold;
+		text-transform: lowercase;
+
+		li {
+			display: inline;
+			padding: 0 1em 0 0;
+		}
+		a {
+			color: $article-cotegory-colors;
+			text-decoration: none;
+			&:hover {
+				// color: $info;
+				text-decoration: underline;
+				
+			}
+		}
+	}
+
+	&--title  {
+		color: $front-title-color;
+		line-height: 1;
+		margin: $dy 0 ;
+	}
+
+	&--subtitle {
+		font-size: (100% / $text-scale-ratio);
+		font-weight: normal;
+	}
+
+	&--description {
+		font-size: $text-md;
+		font-style: italic;
+		// line-height: $baseline;
+		// margin-bottom: 5px;
+
+		margin-top: $dy;
+		color: $article-description-color;
+	}
+
+	&--info {
+		list-style: none;
+		line-height: 1.2;
+		margin: 0;
+		padding: 0;
+
+		display: flex;
+		color: $article-info-color-label;
+
+		li {
+			border-left: 1px solid $article-info-color-border;
+			padding: 0 10px;
+			&:first-child {
+				border: none;
+				padding-left: 0;
+			}
+
+		}
+		time {
+			color: $article-info-color-value;
+			display: block;
+		}
+	}
+}
+

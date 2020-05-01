@@ -1,0 +1,12 @@
+[[main]]
+  identifier = "notes"
+  name = "Notes"
+  url = "notes"
+  weight = 1
+
+[[main]]
+  identifier = "cooking"
+  name = "Cooking"
+  url = "cooking"
+  weight = 2
+

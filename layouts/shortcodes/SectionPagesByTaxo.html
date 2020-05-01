@@ -1,0 +1,67 @@
+{{/*
+		DEBUG 
+<dl>
+	<dt>type</dt>
+	<dd>{{ .Get "type" }}</dd>
+	<dt>taxo</dt>
+	<dd>{{ .Get  "taxo" }}</dd>
+	<dt>notaxolabel</dt>
+	<dd>{{ .Get  "labelnotaxo" }}</dd>
+	<dt>classTable</dt>
+	<dd>{{ .Get  "classtable" }}</dd>
+</dl>
+*/}}
+{{ $typeName := .Get "type" }}
+{{ $taxoName := .Get "taxo" }}
+{{ $labelNoTaxo := or (.Get "labelnotaxo") "(null)" }}
+{{ $classNoTaxo := or (.Get "classnotaxo") "notaxo" }}
+{{ $classTable := or (.Get "classtable") "taxo-pages" }}
+{{ $taxo := index .Site.Taxonomies $taxoName }}
+<table class="{{$classTable}}">
+	<tbody>
+{{/*
+		Pages by Term:
+
+			Term | Page1, Page2, ...
+
+*/}}
+	{{- range $value := $taxo.Alphabetical -}}
+		{{- $pages := where $value.Pages.ByTitle ".Type" $typeName -}}
+		{{- with $pages -}}
+		<tr>
+			{{- with partial "GetTermPage" (slice $taxoName $value.Term) }}
+			<th><a href="{{ .RelPermalink }}">{{ .Title }}</a></th>
+			{{ end -}}
+			<td>{{ template "ul-pages" . }}</td>
+		</tr>
+		{{ end }}
+	{{ end }}{{/* range */}}
+{{/*
+
+		Pages without taxonomy
+
+			No Term | Page1, Page2, ...
+
+*/}}
+	{{ $sectionPages := where .Site.RegularPages ".Type" $typeName }}
+	{{ $pages := where $sectionPages.ByTitle (printf ".Params.%s" $taxoName) "==" nil }}
+	{{ with $pages }}
+		<tr>
+			<th class="{{ $classNoTaxo }}">{{ $labelNoTaxo }}</th>
+			<td>{{ template "ul-pages" . }}</td>
+		</tr>
+	{{ end }}
+	</tbody> 
+</table>
+
+
+
+
+{{ define "ul-pages" }}
+<ul class="ul-pages">
+	{{- range . -}}
+	<li><a href="{{.RelPermalink}}">{{.Title}}</a></li>
+	{{- end -}}{{/* range */}}
+</ul>
+{{ end }}{{/* define */}}
+

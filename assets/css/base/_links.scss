@@ -1,0 +1,9 @@
+%special-link {
+	color: $text-color;
+	text-decoration: none;
+	&:hover, &:focus {
+		background-color: $link-back-color;
+		text-decoration: underline;
+	}
+}
+

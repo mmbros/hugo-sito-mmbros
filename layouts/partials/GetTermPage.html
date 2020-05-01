@@ -1,0 +1,15 @@
+{{/*
+		GetTermPage
+
+		Inpu:w
+		t: 
+			(slice 0:taxonomy-name, 1:term-name)
+		Return:
+			Term Page
+
+		See:
+			https:discourse.gohugo.io/t/taxonomies-per-section/18423
+*/}}
+{{ $taxo := index . 0 }}
+{{ $term := index . 1 }}
+{{ return site.GetPage (printf "/%s/%s" $taxo ($term | urlize )) }}

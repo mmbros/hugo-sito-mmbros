@@ -1,0 +1,9 @@
+{{/*
+input:
+  - Site     mandatory
+  - Datetime mandatory
+
+*/}}
+	{{- .Datetime.Day }} {{/*
+*/}}{{- index .Site.Data.it.months (printf "%d" .Datetime.Month)  }} {{/*
+*/}}{{- .Datetime.Year -}}

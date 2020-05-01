@@ -1,11 +1,12 @@
-{{ partial "common_page_start.html" . }}
+{{ define "front" }}{{ end }}
 
-<section class="l-content">
-  <div class="summary-list">
-    {{ range first 10 .Data.Pages }}
-        {{ .Render "summary"}}
-    {{ end }}
-  </div>
-</section>
-
-{{ partial "common_page_end.html" . }}
+{{ define "body" }}
+	<h2>Sezioni</h2>
+	<ul>
+	{{ range .Site.Sections }}
+		<li>
+			<a href="{{.RelPermalink}}">{{.Name}}</a>
+		</li>
+	{{ end }}
+	</ul>
+{{ end }}

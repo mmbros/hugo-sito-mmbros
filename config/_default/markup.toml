@@ -1,0 +1,14 @@
+
+[tableOfContents]
+  startLevel = 2
+  endLevel = 5
+  ordered = false
+
+[highlight]
+  codeFences = true
+  lineNos = false
+
+[goldmark]
+  [goldmark.renderer]
+    unsafe = true
+

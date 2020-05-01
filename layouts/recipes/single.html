@@ -1,0 +1,22 @@
+{{ define "front" }}
+	{{ partial "front" . }}
+{{ end }}
+
+{{ define "body" }}
+<div class="tabs recipe">
+
+<input type="radio" name="tabs" id="tab1" class="tab1" checked />
+<label for="tab1">Ingredienti</label>
+
+<input type="radio" name="tabs" id="tab2" class="tab2" />
+<label for="tab2">Procedimento</label>
+
+{{ .Content }}
+
+</div>
+{{ end }}
+
+{{ define "breadcrumb" }}
+	{{ partial "breadcrumb" . }}
+{{ end }}
+

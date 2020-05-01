@@ -1,0 +1,62 @@
+{{/*
+    front
+      title
+        subtitle?
+      description?
+      info
+        date
+        reading-time
+        tags*
+*/}}
+<header class="front">
+
+	{{ template  "categories" . }}
+
+	<h1 class="front--title">
+		{{- .Title -}}
+		{{- if .Draft -}}
+			<span class="draft">Draft</span>
+		{{- end -}}
+		{{- with .Params.Subtitle -}}<p class="front--subtitle">{{ . }}</p>{{- end -}}
+	</h1>
+
+	<ul class="front--info">
+		<li>Creazione {{ template "time-date" . }}</li>
+		{{- if .Lastmod }}
+		<li>Ultima modifica {{ template "time-lastmod" . }}</li>
+		{{ end -}}	
+		<li>Tempo di lettura {{ template "time-readingtime" . }}</li>
+	</ul>
+		{{/* partial "tags.html" .Params */}}
+	{{ with .Description }}
+	<p class="front--description">{{.}}</p>
+	{{ end }}
+</header>
+
+{{ define "categories" }}
+	{{- with (.GetTerms "categories") }} 
+<ul class="front--categories">
+		{{- range . }}
+	<li><a href="{{ .RelPermalink  }}">{{ .LinkTitle  }}</a></li>
+		{{- end }}
+</ul>
+	{{- end -}}
+{{- end -}}
+
+{{- define "time-lastmod" -}}
+<time datetime='{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}'>
+	{{- partial "localdate" (dict "Site" $.Site "Datetime" .Lastmod) -}} 
+</time>
+{{- end -}}
+
+
+{{- define "time-date" -}}
+<time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}'>
+	{{- partial "localdate" (dict "Site" $.Site "Datetime" .Date) -}} 
+</time>
+{{- end -}}
+
+
+{{- define "time-readingtime" -}}
+<time datetime='{{ .ReadingTime }}:00'>{{ .ReadingTime }} {{ if (eq .ReadingTime 1) }}minuto{{ else  }}minuti{{ end }}</time>
+{{- end -}}

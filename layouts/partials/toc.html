@@ -1,0 +1,24 @@
+<aside class="toc">
+	<div class="toc--container">
+		<ul class="toc--ancestors-or-self">
+			{{ template "tocnav" (dict "p1" . "p2" .) -}}
+		</ul>
+    	{{ .TableOfContents }}
+    </div>
+</aside>
+
+
+{{ define "tocnav" }}
+  {{- if .p1.Parent -}}
+  {{-   template "tocnav" (dict "p1" .p1.Parent "p2" .p2 ) -}}
+  {{- else if not .p1.IsHome }}
+  {{-   template "tocnav" (dict "p1" .p1.Site.Home "p2" .p2 ) -}}
+  {{- end -}}
+<li><a href="{{ .p1.RelPermalink }}">
+	{{- if .p1.IsHome -}}
+		{{- partial "logo" "" -}}
+	{{- else -}}
+		{{- .p1.Title -}}
+	{{- end -}}
+</a></li>
+{{ end }}
