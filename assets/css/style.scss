@@ -268,6 +268,10 @@ input ~ .tab {
 		padding: 1em;
 		color: $c;
 		border-bottom: $h solid transparent;
+		cursor: pointer;
+		&:hover {
+			background-color: $link-back-color;
+		}
 	}
 	input:checked + label {
 		border-bottom: $h solid $c;

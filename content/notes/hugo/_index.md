@@ -35,3 +35,14 @@ hugo server -w --bind=0.0.0.0 --baseUrl=192.168.1.12
 
 * https://github.com/gohugoio/hugo/issues/1208
 * https://discourse.gohugo.io/t/create-section-taxonomies/343
+
+
+### How to HTTPS with Hugo LetsEncrypt and HAProxy
+
+https://skarlso.github.io/2017/02/15/how-to-https-with-hugo-letsencrypt-haproxy/
+
+
+### Deploy a Hugo Blog Github Actions
+
+https://skarlso.github.io/2019/03/19/deploy-hugo-blog-github-actions/
+
