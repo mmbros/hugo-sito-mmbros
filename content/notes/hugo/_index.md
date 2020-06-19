@@ -7,9 +7,6 @@ draft: true
 categories: "App"
 ---
 
-## Test
-
-
 ## Riferimenti
 
 * [Hugo documentation](https://gohugo.io/documentation/)
@@ -45,4 +42,39 @@ https://skarlso.github.io/2017/02/15/how-to-https-with-hugo-letsencrypt-haproxy/
 ### Deploy a Hugo Blog Github Actions
 
 https://skarlso.github.io/2019/03/19/deploy-hugo-blog-github-actions/
+
+
+[Deploy](./deploy-hugo-site-on-github/)
+
+
+## Usare HUGO per costruire template dinamici
+
+1. Creare una nuova sezione ad-hoc di nome `templates`
+
+       mkdir content/templates
+
+2. Creare la pagina `_index.md`
+
+       hugo new templates/_index.md
+
+3. Configurare le opzioni di build della sezione e delle pagine figlie come segue.
+   Importante é fare in modo che la sezione non venga inclusa nelle liste.
+
+       # section build options:
+       _build:
+         render: false
+         list: false
+       
+       # children build options with cascade
+       cascade:
+         _build:
+           render: true
+           list: false
+
+4. Per evitare che ciascuna pagina figlia sia creata all'interno di una cartella specifica,
+   per ogni pagina specificare il valore di `url` all'interno del front-matter di
+   di ogni pagina figlia.
+   Ad esempio per la pagina `templates/login.html` impostare 
+
+       url: "/templates/login.gohtml"
 

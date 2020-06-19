@@ -20,6 +20,9 @@ draft: true
 
 - [RecipeML](http://www.formatdata.com/recipeml/) The Recipe Markup Language 
 
+
 ## Links
 
 - [recipe-scrapers](https://github.com/hhursev/recipe-scrapers) Python package for scraping recipes data
+
+- [Get your recipes on Google](https://developers.google.com/search/docs/data-types/recipe)

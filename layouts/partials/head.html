@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
 <head lang="{{ .Site.LanguageCode }}">
 <meta charset="utf-8">
 <title>{{ block "title" . }}{{ .Title }} – {{ .Site.Title }}{{ end }}</title>
@@ -30,29 +28,7 @@
 <link rel="shortcut icon" href="{{ "favicon.ico" | relURL }}" type="image/x-icon">
 <link rel="icon" href="{{ "logo.svg" | relURL }}" sizes="any" type="image/svg+xml" />
 {{ end }}
-
 {{ $options := (dict "includePath" (slice "sass/component/hamburgers/_sass/hamburgers") ) }}
 {{ $style := resources.Get "css/style.scss" | resources.ToCSS $options }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}">
 </head>
-
-<body class="default">
-
-<header class="header">
-	{{partial "header" .}}
-	{{ block "breadcrumb" . }}{{ end }}
-</header>
-
-{{ block "front" . }}{{ end }}
-
-<main class="body">{{ block "body" . }}{{ end }}</main>
-
-{{ partial "toc" . }}
-
-<footer class="footer">{{ partial "footer" . }}</footer>
-
-
-
-</body>
-
-</html>

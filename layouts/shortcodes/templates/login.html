@@ -1,0 +1,23 @@
+<h2>{{ partial "logo" }}</h2>
+<form method="POST" autocomplete="off">
+
+<label for="usr">Nome utente</label>
+<input type="text" id="usr" name="username" placeholder="Nome utente" accessKey="u"[[ with .username ]] value="[[ . ]]" [[ end ]] required>
+
+<label for="pwd">Password</label>
+<input type="password" id="pwd" name="password" placeholder="Password" accessKey="p" data-required>
+
+<!--
+The default template tag used by the CSRF middleware .
+This will be replaced with a hidden <input> field containing the
+masked CSRF token.
+-->
+ [[ .csrfField ]]
+
+[[ with .errors ]]
+<div class="errors">[[ . ]]</div>
+[[ end ]]
+
+
+<input type="submit" value="Login">
+</form>

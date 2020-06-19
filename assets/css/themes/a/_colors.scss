@@ -78,6 +78,11 @@ $code-background-color: inherit;
 
 $code-color: mix($color-2, $back-color, 65%);
 $code-background-color: $back-color-alt;
+// from bootstrap
+$code-color: #c7254e;
+$code-background-color: #f9f2f4;
+
+
 
 // Blockquote
 $blockquote-background-color: $back-color-alt;

@@ -13,6 +13,12 @@ reliable, and efficient software
 * [golang.org](https://golang.org/)
 * [wikipedia.en](https://en.wikipedia.org/wiki/Go_%28programming_language%29)
 
+## Links
+
+* [Middlewares in Go: Best practices and examples](https://www.nicolasmerouze.com/middlewares-golang-best-practices-examples/)
+* [Standard GoLang HTTP Middleware](https://gomiddleware.github.io/)
+* [Zero Allocation JSON Logger](https://github.com/rs/zerolog#pretty-logging)
+
 ## Installation
 
 Install to a custom location and workspace setup:

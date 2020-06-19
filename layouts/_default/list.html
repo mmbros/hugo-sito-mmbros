@@ -16,7 +16,6 @@
 
 {{ define "body" }}
 	{{ .Content }}
-	<h2>Elenco delle pagine</h2>
 	{{ template "pages-to-cards" .Pages.ByTitle }}
 {{ end }}{{/* define */}}
 

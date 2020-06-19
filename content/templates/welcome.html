@@ -1,0 +1,13 @@
+---
+title: "Welcome"
+date: 2020-05-19T19:17:24+02:00
+draft: true
+url: "/templates/welcome.gohtml"
+---
+
+<h1>Welcome [[ .username ]]!</h1>
+
+<form method="POST" action="/logout">
+[[ .csrfField ]]
+<input type="submit" value="Logout">
+</form>

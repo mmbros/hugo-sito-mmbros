@@ -2,15 +2,15 @@ let SessionLoad = 1
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
-inoremap <silent> <expr> <Plug>+ deoplete#mapping#_dummy('deoplete#mapping#_prev_complete')
 inoremap <silent> <expr> <Plug>_ deoplete#mapping#_dummy('deoplete#mapping#_complete')
+inoremap <silent> <expr> <Plug>+ deoplete#mapping#_dummy('deoplete#mapping#_prev_complete')
 inoremap <silent> <C-Tab> =UltiSnips#ListSnippets()
 inoremap <silent> <SNR>53_AutoPairsReturn =AutoPairsReturn()
 inoremap <silent> <Plug>NERDCommenterInsert  <BS>:call NERDComment('i', 'insert')
 imap <F3> =strftime("%Y-%m-%dT%H:%M:%S%z")
-snoremap <silent>  "_c
-nmap  h
 xmap  h
+nmap  h
+snoremap <silent>  "_c
 omap  h
 xnoremap <silent> 	 :call UltiSnips#SaveLastVisualSelection()gvs
 snoremap <silent> 	 :call UltiSnips#ExpandSnippet()
@@ -22,6 +22,7 @@ snoremap  "_c
 vnoremap <silent> # :call VisualSelection('', '')?=@/
 vnoremap <silent> * :call VisualSelection('', '')/=@/
 xmap S <Plug>VSurround
+smap \cc :botright cope
 nmap \ca <Plug>NERDCommenterAltDelims
 xmap \cu <Plug>NERDCommenterUncomment
 nmap \cu <Plug>NERDCommenterUncomment
@@ -59,7 +60,6 @@ map \ss :setlocal spell!
 map \p :cp
 map \n :cn
 map \co ggVGy:tabnew:set syntax=qfpgg
-smap \cc :botright cope
 omap \cc :botright cope
 vnoremap <silent> \r :call VisualSelection('replace', '')
 map \g :Ag
@@ -91,6 +91,7 @@ nmap ySs <Plug>YSsurround
 nmap yss <Plug>Yssurround
 nmap yS <Plug>YSurround
 nmap ys <Plug>Ysurround
+nnoremap <SNR>114_: :=v:count ? v:count : ''
 nnoremap <SNR>111_: :=v:count ? v:count : ''
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())
@@ -180,6 +181,7 @@ set timeoutlen=500
 set whichwrap=b,s,<,>,h,l
 set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 set wildmenu
+set window=45
 set nowritebackup
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
@@ -193,7 +195,7 @@ set shortmess=aoO
 argglobal
 %argdel
 $argadd assets/css/style.scss
-edit assets/css/style.scss
+edit content/notes/raspberrypi.md
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -210,50 +212,14 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 exe 'vert 1resize ' . ((&columns * 91 + 92) / 184)
-exe '2resize ' . ((&lines * 20 + 23) / 46)
+exe '2resize ' . ((&lines * 21 + 23) / 46)
 exe 'vert 2resize ' . ((&columns * 92 + 92) / 184)
-exe '3resize ' . ((&lines * 21 + 23) / 46)
+exe '3resize ' . ((&lines * 20 + 23) / 46)
 exe 'vert 3resize ' . ((&columns * 92 + 92) / 184)
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
 inoremap <buffer> <silent> <BS> =AutoPairsDelete()
-inoremap <buffer> <Plug>(emmet-merge-lines) =emmet#util#closePopup()=emmet#mergeLines()
-inoremap <buffer> <Plug>(emmet-anchorize-summary) =emmet#util#closePopup()=emmet#anchorizeURL(1)
-inoremap <buffer> <Plug>(emmet-anchorize-url) =emmet#util#closePopup()=emmet#anchorizeURL(0)
-inoremap <buffer> <Plug>(emmet-remove-tag) =emmet#util#closePopup()=emmet#removeTag()
-inoremap <buffer> <Plug>(emmet-split-join-tag) :call emmet#splitJoinTag()
-inoremap <buffer> <Plug>(emmet-toggle-comment) =emmet#util#closePopup()=emmet#toggleComment()
-inoremap <buffer> <Plug>(emmet-image-encode) =emmet#util#closePopup()=emmet#imageEncode()
-inoremap <buffer> <Plug>(emmet-image-size) =emmet#util#closePopup()=emmet#imageSize()
-inoremap <buffer> <Plug>(emmet-move-prev-item) :call emmet#moveNextPrevItem(1)
-inoremap <buffer> <Plug>(emmet-move-next-item) :call emmet#moveNextPrevItem(0)
-inoremap <buffer> <Plug>(emmet-move-prev) =emmet#util#closePopup()=emmet#moveNextPrev(1)
-inoremap <buffer> <Plug>(emmet-move-next) =emmet#util#closePopup()=emmet#moveNextPrev(0)
-inoremap <buffer> <Plug>(emmet-balance-tag-outword) :call emmet#balanceTag(-1)
-inoremap <buffer> <Plug>(emmet-balance-tag-inward) :call emmet#balanceTag(1)
-inoremap <buffer> <Plug>(emmet-update-tag) =emmet#util#closePopup()=emmet#updateTag()
-inoremap <buffer> <Plug>(emmet-expand-word) =emmet#util#closePopup()=emmet#expandAbbr(1,"")
-inoremap <buffer> <Plug>(emmet-expand-abbr) =emmet#util#closePopup()=emmet#expandAbbr(0,"")
-vmap <buffer> c <Plug>(emmet-code-pretty)
-nmap <buffer> m <Plug>(emmet-merge-lines)
-nmap <buffer> A <Plug>(emmet-anchorize-summary)
-nmap <buffer> a <Plug>(emmet-anchorize-url)
-nmap <buffer> k <Plug>(emmet-remove-tag)
-nmap <buffer> j <Plug>(emmet-split-join-tag)
-nmap <buffer> / <Plug>(emmet-toggle-comment)
-nmap <buffer> I <Plug>(emmet-image-encode)
-nmap <buffer> i <Plug>(emmet-image-size)
-nmap <buffer> N <Plug>(emmet-move-prev)
-nmap <buffer> n <Plug>(emmet-move-next)
-vmap <buffer> D <Plug>(emmet-balance-tag-outword)
-nmap <buffer> D <Plug>(emmet-balance-tag-outword)
-vmap <buffer> d <Plug>(emmet-balance-tag-inward)
-nmap <buffer> d <Plug>(emmet-balance-tag-inward)
-nmap <buffer> u <Plug>(emmet-update-tag)
-nmap <buffer> ; <Plug>(emmet-expand-word)
-vmap <buffer> , <Plug>(emmet-expand-abbr)
-nmap <buffer> , <Plug>(emmet-expand-abbr)
 inoremap <buffer> <silent> § =AutoPairsMoveCharacter('''')
 inoremap <buffer> <silent> ¢ =AutoPairsMoveCharacter('"')
 inoremap <buffer> <silent> © =AutoPairsMoveCharacter(')')
@@ -266,43 +232,7 @@ inoremap <buffer> <silent> ý =AutoPairsMoveCharacter('}')
 inoremap <buffer> <silent> û =AutoPairsMoveCharacter('{')
 inoremap <buffer> <silent> Ý =AutoPairsMoveCharacter(']')
 inoremap <buffer> <silent> Û =AutoPairsMoveCharacter('[')
-vnoremap <buffer> <Plug>(emmet-code-pretty) :call emmet#codePretty()
-nnoremap <buffer> <Plug>(emmet-merge-lines) :call emmet#mergeLines()
-nnoremap <buffer> <Plug>(emmet-anchorize-summary) :call emmet#anchorizeURL(1)
-nnoremap <buffer> <Plug>(emmet-anchorize-url) :call emmet#anchorizeURL(0)
-nnoremap <buffer> <Plug>(emmet-remove-tag) :call emmet#removeTag()
-nnoremap <buffer> <Plug>(emmet-split-join-tag) :call emmet#splitJoinTag()
-nnoremap <buffer> <Plug>(emmet-toggle-comment) :call emmet#toggleComment()
-nnoremap <buffer> <Plug>(emmet-image-encode) :call emmet#imageEncode()
-nnoremap <buffer> <Plug>(emmet-image-size) :call emmet#imageSize()
-nnoremap <buffer> <Plug>(emmet-move-prev-item) :call emmet#moveNextPrevItem(1)
-nnoremap <buffer> <Plug>(emmet-move-next-item) :call emmet#moveNextPrevItem(0)
-nnoremap <buffer> <Plug>(emmet-move-prev) :call emmet#moveNextPrev(1)
-nnoremap <buffer> <Plug>(emmet-move-next) :call emmet#moveNextPrev(0)
-vnoremap <buffer> <Plug>(emmet-balance-tag-outword) :call emmet#balanceTag(-1)
-nnoremap <buffer> <Plug>(emmet-balance-tag-outword) :call emmet#balanceTag(-1)
-vnoremap <buffer> <Plug>(emmet-balance-tag-inward) :call emmet#balanceTag(1)
-nnoremap <buffer> <Plug>(emmet-balance-tag-inward) :call emmet#balanceTag(1)
-nnoremap <buffer> <Plug>(emmet-update-tag) :call emmet#updateTag()
-nnoremap <buffer> <Plug>(emmet-expand-word) :call emmet#expandAbbr(1,"")
-vnoremap <buffer> <Plug>(emmet-expand-abbr) :call emmet#expandAbbr(2,"")
-nnoremap <buffer> <Plug>(emmet-expand-abbr) :call emmet#expandAbbr(3,"")
 inoremap <buffer> <silent>  =AutoPairsDelete()
-imap <buffer> m <Plug>(emmet-merge-lines)
-imap <buffer> A <Plug>(emmet-anchorize-summary)
-imap <buffer> a <Plug>(emmet-anchorize-url)
-imap <buffer> k <Plug>(emmet-remove-tag)
-imap <buffer> j <Plug>(emmet-split-join-tag)
-imap <buffer> / <Plug>(emmet-toggle-comment)
-imap <buffer> I <Plug>(emmet-image-encode)
-imap <buffer> i <Plug>(emmet-image-size)
-imap <buffer> N <Plug>(emmet-move-prev)
-imap <buffer> n <Plug>(emmet-move-next)
-imap <buffer> D <Plug>(emmet-balance-tag-outword)
-imap <buffer> d <Plug>(emmet-balance-tag-inward)
-imap <buffer> u <Plug>(emmet-update-tag)
-imap <buffer> ; <Plug>(emmet-expand-word)
-imap <buffer> , <Plug>(emmet-expand-abbr)
 inoremap <buffer> <silent>   =AutoPairsSpace()
 inoremap <buffer> <silent> " =AutoPairsInsert('"')
 inoremap <buffer> <silent> ' =AutoPairsInsert('''')
@@ -334,8 +264,8 @@ setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 set colorcolumn=80
 setlocal colorcolumn=80
-setlocal comments=s1:/*,mb:*,ex:*/,://
-setlocal commentstring=//\ %s
+setlocal comments=fb:*,fb:-,fb:+,n:>
+setlocal commentstring=>\ %s
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=
 setlocal conceallevel=0
@@ -346,14 +276,14 @@ setlocal nocursorbind
 setlocal nocursorcolumn
 set cursorline
 setlocal cursorline
-setlocal define=^\\s*\\%(@mixin\\|=\\)
+setlocal define=
 setlocal dictionary=
 setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal noexpandtab
-if &filetype != 'scss'
-setlocal filetype=scss
+if &filetype != 'markdown'
+setlocal filetype=markdown
 endif
 setlocal fixendofline
 set foldcolumn=1
@@ -368,16 +298,16 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=tcqln
+setlocal formatlistpat=^\\s*\\d\\+\\.\\s\\+\\|^[-*+]\\s\\+\\|^\\[^\\ze[^\\]]\\+\\]:
 setlocal formatprg=
 setlocal grepprg=
 setlocal iminsert=0
 setlocal imsearch=-1
-setlocal include=^\\s*@import\\s\\+\\%(url(\\)\\=[\"']\\=
-setlocal includeexpr=substitute(v:fname,'\\%(.*/\\|^\\)\\zs','_','')
-setlocal indentexpr=GetCSSIndent()
-setlocal indentkeys=0{,0},!^F,o,O
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal infercase
 setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=
@@ -388,14 +318,14 @@ setlocal lispwords=
 setlocal nolist
 setlocal makeencoding=
 setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
+setlocal matchpairs=(:),{:},[:],<:>
 setlocal modeline
 setlocal modifiable
 setlocal nrformats=bin,octal,hex
 set number
 setlocal number
 setlocal numberwidth=4
-setlocal omnifunc=csscomplete#CompleteCSS
+setlocal omnifunc=htmlcomplete#CompleteTags
 setlocal path=
 setlocal nopreserveindent
 setlocal nopreviewwindow
@@ -410,18 +340,18 @@ setlocal shiftwidth=4
 setlocal noshortname
 setlocal sidescrolloff=-1
 setlocal signcolumn=auto
-setlocal nosmartindent
+setlocal smartindent
 setlocal softtabstop=0
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
 setlocal statusline=%!airline#statusline(1)
-setlocal suffixesadd=.sass,.scss,.css
+setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'scss'
-setlocal syntax=scss
+if &syntax != 'markdown'
+setlocal syntax=markdown
 endif
 setlocal tabstop=4
 setlocal tagcase=
@@ -442,11 +372,11 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 21) / 42)
+let s:l = 56 - ((32 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+56
 normal! 0
 wincmd w
 argglobal
@@ -678,7 +608,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 10) / 20)
+let s:l = 1 - ((0 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -686,7 +616,7 @@ normal! zt
 normal! 0
 wincmd w
 argglobal
-terminal ++curwin ++cols=92 ++rows=21 
+terminal ++curwin ++cols=92 ++rows=20 
 let s:cpo_save=&cpo
 set cpo&vim
 inoremap <buffer> <silent> <BS> =AutoPairsDelete()
@@ -841,22 +771,22 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 10) / 21)
+let s:l = 1 - ((0 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
 normal! 0
 wincmd w
-2wincmd w
 exe 'vert 1resize ' . ((&columns * 91 + 92) / 184)
-exe '2resize ' . ((&lines * 20 + 23) / 46)
+exe '2resize ' . ((&lines * 21 + 23) / 46)
 exe 'vert 2resize ' . ((&columns * 92 + 92) / 184)
-exe '3resize ' . ((&lines * 21 + 23) / 46)
+exe '3resize ' . ((&lines * 20 + 23) / 46)
 exe 'vert 3resize ' . ((&columns * 92 + 92) / 184)
 tabnext 1
-badd +1 assets/css/style.scss
+badd +3 assets/css/style.scss
 badd +0 assets/css/themes/a/_dimensions.scss
+badd +0 content/notes/raspberrypi.md
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif

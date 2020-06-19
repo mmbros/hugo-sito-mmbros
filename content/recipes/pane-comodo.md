@@ -40,9 +40,7 @@ draft: true
 
 0. Per la 2ª volta rigirare l'impasto e fare riposare per altri 10 minuti.
 
-0. Per la 3ª volta rigirare l'impasto e fare riposare per altri 10 minuti.
-
-0. Per la 4ª volta rigirare l'impasto, coprire con la pellicola e mettere
+0. Per la 3ª volta rigirare l'impasto, coprire con la pellicola e mettere
    in frigorifero a lievitare per un minimo di 6 ed un massimo di 24 ore.
 
 0. Infarinare il piano di lavoro ed anche le mani e fare 2 o  pieghe per dare
@@ -63,7 +61,8 @@ draft: true
 
 0. Scaldare il forno e la pentola a 230º.
 
-0. Versare l'impasto nella pentola bollente in modo che non si attacchi.
+0. Versare l'impasto nella pentola bollente in modo che non si attacchi
+   (per maggiore sicurezza, mettere un po' di farina sul fondo della pentola).
 
 0. Cuocere 30 minuti a 230º con coperchio.
 

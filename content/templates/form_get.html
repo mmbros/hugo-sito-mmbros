@@ -1,0 +1,22 @@
+---
+title: "Form Get Test"
+date: 2020-05-21T23:30:32+0200
+draft: true
+url: "/templates/form_get.gohtml"
+---
+
+<h1>Welcome [[ .username ]]!</h1>
+
+<form method="POST" action="/form_post">
+
+	<label for="country">Nazione</label>
+	<select name="country" id="country" required>
+		<option value="fr">Francia</option>
+		<option value="de">Germania</option>
+		<option value="it">Italia</option>
+		<option value="es">Spagna</option>
+	</select>
+
+[[ .csrfField ]]
+<input type="submit" value="Submit">
+</form>

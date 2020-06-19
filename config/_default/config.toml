@@ -24,6 +24,7 @@ staticDir = ["static", "static/favicon"]
   category = "categories"
   tag = "tags"
 
-# [permalinks]
+[permalinks]
+  templates = "/templ/:title"
   # categories = "/notes/:section/"
   # tgs = "/notes/:section/"

@@ -18,8 +18,8 @@ $debug: 0;
 @import "component/cards";
 @import "component/taxo";
 
+
 body {
-	@include l_container();
 	@include tbcolor($text-color, $back-color);
 	font-family: $font-family;
 	font-size: $text-bs;
@@ -96,6 +96,11 @@ a {
 	}
 }
 
+.default {
+
+	@include l_container();
+}
+
 .header {
 	@include l_header()
 	@include tbcolor($header-text-color, $header-back-color);
@@ -133,7 +138,7 @@ a {
 	}
 }
 @include media-query(large) {
-	body {
+	.default {
 		@include l_container(large);
 	}
 	.toc--container {
@@ -260,21 +265,76 @@ input ~ .tab {
 .recipe{
 	$h: 3px;
 	$c: $color-2;
+	$c-mute: mix($c, $back-color, 70%);
+ 
 
 	label {
 		text-transform: lowercase;
 		font-variant: small-caps;
 		font-size: $text-md;
 		padding: 1em;
-		color: $c;
+		color: $c-mute;
 		border-bottom: $h solid transparent;
 		cursor: pointer;
 		&:hover {
-			background-color: $link-back-color;
+			border-bottom: $h solid $c-mute;
 		}
 	}
 	input:checked + label {
+		color: $c;
 		border-bottom: $h solid $c;
 	}
 }
 
+/* formi.login */
+.login {
+	$p: 1rem;
+	$bc: darken($color-3, 40%); 
+
+
+	%login-common {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 30rem;
+		width: 100%;
+		display: block;
+		padding: $p;
+	}
+
+	h2 {
+	    @extend %login-common;
+		background-color: $color-1;
+		color: $color-2;
+		//border: 1px solid $bc;
+		//border-bottom: none;
+		margin-top: $p;
+	}
+	form {
+	    @extend %login-common;
+		background-color: white; 
+		//border: 1px solid $bc;
+	}
+	input {
+		display: block;
+		width: 100%;
+		padding: $p;
+		margin-bottom: $p;
+		border: 1px solid $bc;
+		&:focus {
+			background-color: lighten($color-2, 70%); 
+		}
+		&[type="submit"] {
+			font-weight: bold;
+			
+			background-color: $color-2; 
+			border: none;
+			color: $color-3;
+			margin-top: (1+$line-height)*$p;
+			margin-bottom: 0;
+
+			&:hover, &:focus {
+				opacity: 80%;
+			}
+		}
+	}
+}
