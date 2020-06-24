@@ -32,12 +32,12 @@ description: "Music Player Daemon (MPD) is a flexible, powerful, server-side app
 
 ### Errori
 
-#### exception: Failed to open '/etc/mpd.conf': Permission denied
+#### Failed to open '/etc/mpd.conf': Permission denied
 
 occorre aggiungere il gruppo `audio` all'utente corrente
 
 
-#### exception: failed to open log file "/var/log/mpd/mpd.log" (config line 40): Permission denied
+#### failed to open log file "/var/log/mpd/mpd.log" (config line 40): Permission denied
 
 https://bugs.launchpad.net/ubuntu/+source/mpd/+bug/1842683
 
@@ -49,7 +49,7 @@ $ ls -l /var/log/mpd/
 total 8
 -rw-r--r-- 1 root root 600 Sep 4 09:36 mpd.log
 -rw-r--r-- 1 root root 164 Aug 31 21:58 mpd.log.1.gz
-
+```
 $cat /etc/logrotate.d/mpd
 /var/log/mpd/*.log {
         weekly
@@ -60,6 +60,7 @@ $cat /etc/logrotate.d/mpd
         copytruncate
         create 600
 }
+```
 
 So I'd guess that the create statement in /etc/logrotate.d/mpd should read
 
@@ -67,8 +68,13 @@ So I'd guess that the create statement in /etc/logrotate.d/mpd should read
 
 and not just "create 600"
 
+#### Failed to open mixer for 'My ALSA Device': no such mixer control: PCM
 
+Sintomi: i comandi `mpc` mostrano sempre `volume: n/a`.
+Le canzoni vengono riprodotte, ma a volume bassissimo.
+Verificando sul file di log `/var/log/mpd.log` è presente l'errore:
 
+    Failed to open mixer for 'My ALSA Device': no such mixer control: PCM
 
 ## Clients
 
@@ -89,3 +95,9 @@ the client will read the stream from URL:
 
     http://192.168.1.2:8000/mpd
 
+### M.A.L.P.
+
+
+#### MPD Proxy setting and Error 2/0: Bad song index 
+
+	https://gitlab.com/gateship-one/malp/-/issues/129
